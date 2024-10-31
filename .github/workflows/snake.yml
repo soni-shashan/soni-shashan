@@ -7,6 +7,9 @@ on:
   schedule:
     - cron: "0 0 * * *"  # Runs daily at midnight UTC
 
+permissions:
+  contents: write  # Ensure that the GITHUB_TOKEN has write permissions
+
 jobs:
   generate-snake:
     runs-on: ubuntu-latest
