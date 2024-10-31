@@ -60,7 +60,7 @@
 
 ## 🐍 Contribution Graph
 
-![GitHub Contributions](https://github.com/soni-shashan/soni-shashan/blob/main/.github/github-contribution-grid-snake.svg)
+![GitHub Contributions](https://github.com/soni-shashan/soni-shashan/blob/snake/ocean.gif)
 
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=soni-shashan&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
