@@ -3,7 +3,7 @@ name: Generate Snake Animation
 on:
   push:
     branches:
-      - "*"  # Matches all branches
+      - "*"  # Runs on all branch pushes
   schedule:
     - cron: "0 0 * * *"  # Runs daily at midnight UTC
 
@@ -11,20 +11,33 @@ jobs:
   generate-snake:
     runs-on: ubuntu-latest
     steps:
-      - name: Create dist directory
-        run: mkdir -p dist
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Generate GitHub Contribution Snake
         uses: Platane/snk@v3
         with:
           github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-snake.svg
-            dist/github-snake-dark.svg?palette=github-dark
-            dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
+            github-snake.svg
+            github-snake-dark.svg?palette=github-dark
+            ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
-      - name: Upload Snake Artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: snake-outputs
-          path: dist/
+      - name: Create snake branch if it doesn’t exist
+        run: |
+          git fetch origin
+          if ! git rev-parse --verify origin/snake; then
+            git checkout -b snake
+          else
+            git checkout snake
+          fi
+
+      - name: Add and commit snake files
+        run: |
+          git add github-snake.svg github-snake-dark.svg ocean.gif
+          git commit -m "Update GitHub Contribution Snake"
+
+      - name: Push changes to snake branch
+        run: git push origin snake
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
