@@ -23,6 +23,11 @@ jobs:
             github-snake-dark.svg?palette=github-dark
             ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
 
+      - name: Configure Git author
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "GitHub Actions"
+
       - name: Create snake branch if it doesn’t exist
         run: |
           git fetch origin
