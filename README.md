@@ -62,9 +62,9 @@
 
 ![GitHub Contributions](https://github.com/soni-shashan/soni-shashan/blob/main/.github/ocean.gif) 
 
+## 🚀 Hacktoberfest 2024
+[![An image of @sonishashan's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/sonishashan)](https://holopin.io/@sonishashan)
+
 <p align="center">
   <img src="https://komarev.com/ghpvc/?username=soni-shashan&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
 </p>
-
-## 🚀 Hacktoberfest 2024
-[![An image of @sonishashan's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/sonishashan)](https://holopin.io/@sonishashan)
