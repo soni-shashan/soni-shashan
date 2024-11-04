@@ -13,21 +13,21 @@
 <p align="center">
   <a href="https://linkedin.com/in/shashan-lumbhani"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
   <a href="https://instagram.com/mr.shashan_official"><img src="https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=Instagram&logoColor=white"/></a>
-  <a href="https://www.leetcode.com/soni-shashan"><img src="https://img.shields.io/badge/-LeetCode-FFA116?style=flat&logo=LeetCode&logoColor=black"/></a>
+  <a href="https://www.leetcode.com/soni-shashan"><img src="https://img.shields.io/badge/leetcode-180+-green?color=green&logo=leetcode"/></a>
   <a href="mailto:mr.shashansoni@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
 </p>
 
 ## 🚀 About Me
 
-- 🎓 Computer Science Engineering student
+- 🎓 B.Tech in Computer Science Engineering
 - 💻 Passionate about coding and problem-solving
 - 🌱 Always learning and exploring new technologies
+- ✨ "Code is like humor. When you have to explain it, it’s bad." - Cory House
 
 ## 🛠 Skills
-
 <p align="center">
   <img src="https://img.shields.io/badge/-C++-00599C?style=flat&logo=c%2B%2B&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Java-007396?style=flat&logo=java&logoColor=white"/>
+  <img src="https://img.shields.io/badge/-Java-007396?style=flat&logo=Java&logoColor=white"/>
   <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
   <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white"/>
@@ -35,6 +35,7 @@
   <img src="https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white"/>
   <img src="https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux&logoColor=black"/>
 </p>
+
 
 ## 📊 GitHub Stats
 
