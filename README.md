@@ -13,7 +13,7 @@
 <p align="center">
   <a href="https://linkedin.com/in/shashan-lumbhani"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
   <a href="https://instagram.com/mr.shashan_official"><img src="https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=Instagram&logoColor=white"/></a>
-  <a href="https://www.leetcode.com/soni-shashan"><img src="https://img.shields.io/badge/leetcode-180+-green?color=green&logo=leetcode"/></a>
+  <a href="https://www.leetcode.com/soni-shashan"><img src="https://img.shields.io/badge/leetcode-190+-green?color=green&logo=leetcode"/></a>
   <a href="mailto:mr.shashansoni@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
 </p>
 
