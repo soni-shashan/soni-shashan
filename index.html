@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shashan Lumbhani | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #fff;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #777;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 1s ease-in;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+    }
+
+    .project, .cert, .achievement {
+      margin-bottom: 1rem;
+    }
+
+    .project a, .achievement a {
+      display: inline-block;
+      margin-top: 0.3rem;
+      color: #007acc;
+      text-decoration: none;
+    }
+
+    .project a:hover, .achievement a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #eee;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    img.profile {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 1rem auto;
+      display: block;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+      list-style-type: disc;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .about-icons {
+      margin-top: 1rem;
+    }
+
+    .about-icons a {
+      text-decoration: none;
+      margin-right: 15px;
+      font-size: 1.1rem;
+      color: #333;
+      background: #f0f0f0;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
+
+    .about-icons a:hover {
+      background-color: #007acc;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="profile.png" alt="Banti Patel" class="profile" />
+    <h1>Shashan Lumbhani</h1>
+    <p>Machine Learning & AI Enthusiast | CSE Student</p>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      👋 Hi! I'm <strong>Shashan Lumbhani</strong>, a Computer Science student who loves building smart systems.  
+      I work on Machine Learning, Deep Learning, and real-time AI projects.  
+      I'm always eager to learn new technologies and solve real-world problems using data. <br><br>
+      I enjoy creating ML models, designing dashboards, and making user-friendly interfaces.
+    </p>
+    
+    
+    <div class="about-icons">
+      🔗 <a href="https://github.com/soni-shashan" target="_blank">GitHub</a>
+      💼 <a href="https://www.linkedin.com/in/shashan-lumbhani/" target="_blank">LinkedIn</a>
+      📄 <a href="RESUME.pdf" target="_blank">Resume</a>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <p><strong>CHAROTAR UNIVERSITY OF SCIENCE AND TECHNOLOGY - CHANDUBHAI S PATEL INSTITUTE OF TECHNOLOGY (CSPIT)</strong> – B.Tech CSE – CGPA: 9.81 (2023-2027)</p>
+    <p><strong>B.N.VIRANI SCIENCE ACADEMY</strong> – BOARD : 95.65PR , GUJCET : 98.10PR, JEE MAIN : 88.38PR</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <strong>Fruit Quality Predication</strong><br>
+      <em>Python | TensorFlow | Streamlit | OpenCV</em><br>
+      Developed a Streamlit-based AI system using Deep Learning (CNN) to predict fruit quality with 91% accuracy. Enabled real-time predictions via image uploads or webcam input.
+      <br><a href="https://github.com/soni-shashan/FRUIT-QUALITY-PREDICTION" target="_blank">GitHub Link</a>
+    </div>
+    <div class="project">
+      <strong>Dynamic WareGrid – Warehouse Management System</strong><br>
+      <em>Python | Streamlit | Plotly | Twilio API | HuggingFace | OpenCV</em><br>
+      An AI-powered warehouse system with barcode scanning, transaction logging, chatbot assistant, data visualizations, and WhatsApp alerts for low stock levels.
+      <br><a href="https://github.com/soni-shashan/WareGrid" target="_blank">GitHub Link</a>
+    </div>
+    <div class="project">
+      <strong>GIF TO BOOT ANIMATION CONVERTER</strong><br>
+      <em>Python</em><br>
+      The GIF to Boot Animation Converter is a Python-based tool designed to simplify the process of converting GIF files into boot animations for Android devices. This user-friendly tool provides a straightforward interface and commands, making it accessible for users who want to customize their device's boot animation.
+      <br><a href="https://github.com/soni-shashan/GIF-TO-BOOT-ANIMATION" target="_blank">GitHub Link</a>
+    </div>
+    <div class="project">
+      <strong>CSPIT CSE AFTER HOURS PERMISSION</strong><br>
+      <em>Python | Flask | Google App Scripts | OAuth 2.0 | Vercel</em><br>
+      A streamlined campus management solution designed to automate the request and approval process for after-hours Labs facility access at CSPIT CSE. Implements secure logins, role-based authorization, and real-time notifications, enhancing administrative efficiency and improving student convenience.
+      <br><a href="https://cspitcse.vercel.app/" target="_blank">Live Project Link</a>
+    </div>
+    <div class="project">
+      <strong>CHARUSAT STUDENT INFO FETCHER</strong><br>
+      <em>JavaScript | puppeteer | Vercel</em><br>
+      The CHARUSAT Student Info Fetcher is a serverless web API built using Puppeteer, and Chromium (via @sparticuz/chromium) that scrapes student information from the CHARUSAT University Fee Payment Portal. Given a valid student ID, it returns relevant student details like name, institute, department, and current semester.
+      <br><a href="https://github.com/soni-shashan/charusat-student-info-fetcher" target="_blank">Github Link</a>
+      &emsp;|&emsp;<a href="https://getcharusatstudentinfo.vercel.app/" target="_blank">Live Project Link</a>
+    </div>
+    <div class="project">
+      <strong>CHARUSAT FOOD CORNER</strong><br>
+      <em>Python | Flask | Firebase | OAuth 2.0 | Vercel</em><br>
+      A simple web-based application designed to streamline on-campus food ordering and management at CHARUSAT. Implements user-friendly interfaces for menu browsing, order placement, and real-time tracking, demonstrating proficiency in full-stack development with technologies like HTML, CSS, JavaScript, and Node.js.
+      <br><a href="https://github.com/soni-shashan/CHARUSAT-FOOD-CORNER" target="_blank">Github Link</a>
+      &emsp;|&emsp;<a href="https://charusat-food-corner.vercel.app/" target="_blank">Live Project Link</a>
+    </div>
+    <div class="project">
+      <strong>Inventory Management System</strong><br>
+      <em>C++ | .NET Framework</em><br>
+      Desktop application to manage product stock efficiently. Features CRUD operations, authentication, and reporting modules.
+      <br><a href="https://github.com/soni-shashan/INVENTORY_MANAGEMENT_SYSTEM" target="_blank">GitHub Link</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Key Strengths:</strong> Machine Learning (ML), Deep Learning (DL), User Interface Designing (UI)</li>
+      <li><strong>Programming Languages:</strong> Python, C++, Java, JavaScript</li>
+      <li><strong>Frameworks:</strong> TensorFlow, Keras, Pandas, NumPy, Matplotlib, Seaborn, scikit-learn, Flask</li>
+      <li><strong>Tools:</strong> Power BI, Jetson Nano, PostgreSQL, MySQL</li>
+      <li><strong>Soft Skills:</strong> Adaptive, Collaborative, Organized</li>
+    </ul>
+  </section>
+
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li><strong>Machine Learning Specialization</strong> (Coursera – Stanford & DeepLearning.AI)
+        <ul>
+          <li>Supervised Machine Learning: Regression and Classification</li>
+          <li>Advanced Learning Algorithms</li>
+          <li>Unsupervised Learning, Recommenders, Reinforcement Learning</li>
+        </ul>
+      </li>
+      <li><strong>Getting Started with AI on Jetson Nano</strong> – NVIDIA</li>
+      <li><strong>Crash Course on Python</strong> – Google (Coursera)</li>
+      <li><strong>Kaggle Courses:</strong> Intro to Programming, Python, Intro to Machine 
+        Learning,Intro to Deep Learning</li>
+      <li><strong>HackerRank Certificates:</strong> Python, Java</li>
+      <li><strong>NPTEL:</strong> Data Structure and Algorithms 
+        using Java (79%), Design And Analysis Of Algorithms (71%)</li>
+    </ul>
+  </section>
+
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>220+ LeetCode Problems Solved — <a href="https://leetcode.com/u/soni-shashan/" target="_blank">LeetCode Profile</a></li>
+      <li>HackerRank: 
+        <a href="https://www.hackerrank.com/profile/shashan_lumbhani" target="_blank">C++ (5⭐), Java (4⭐), Python (3⭐), C (5⭐)</a>
+      </li>
+      <li>PyQuest Hackathon 2025 – Fourth Rank</li>
+      <li>Ideathon 2025 – Third Rank</li>
+      <li>Participated in University-Level DoesHack'24 AI Hackathon – Meditab</li>
+      <li>State-Level Techathon 2025 – Adani Institute (organized by ThinkBiz)</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:mr.shashansoni@gmail.com">mr.shashansoni@gmail.com</a></p>
+    <p>📍 Bhavnagar, Gujarat, India</p>
+    <p>
+      <a href="https://www.linkedin.com/in/shashan-lumbhani/" target="_blank">LinkedIn</a> |
+      <a href="https://github.com/soni-shashan" target="_blank">GitHub</a>
+    </p>
+  </section>
+
+  <footer>
+    &copy; 2025 Shashan Lumbhani. All rights reserved.
+  </footer>
+</body>
+</html>
