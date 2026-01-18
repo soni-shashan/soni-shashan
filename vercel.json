@@ -23,8 +23,8 @@
       "dest": "/index.html"
     },
     {
-        "src": "/admin/login",
-        "dest": "/index.html"
-    }
+        "src": "/zohoverify/verifyforzoho.html",
+        "dest": "/verifyforzoho.html"
+    },
   ]
 }
