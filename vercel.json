@@ -23,8 +23,8 @@
       "dest": "/index.html"
     },
     {
-        "src":"/admin/(.*)",
-        "dest":"/admin/$1"
+      "src": "/admin/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
