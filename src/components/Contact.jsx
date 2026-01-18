@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { contactAPI } from '../services/api';
 import { toast } from 'react-toastify';
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
+import { FiMail, FiMapPin } from 'react-icons/fi';
 import '../styles/Contact.css';
 
 const Contact = () => {
