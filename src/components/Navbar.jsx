@@ -28,10 +28,10 @@ const Navbar = () => {
                     </Link>
                     
                     <div className={`nav-links ${isOpen ? 'active' : ''}`}>
-                        <a onClick={() => scrollToSection('introduction')}>Home</a>
-                        <a onClick={() => scrollToSection('education')}>Education</a>
-                        <a onClick={() => scrollToSection('projects')}>Projects</a>
-                        <a onClick={() => scrollToSection('contact')}>Contact</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('introduction'); }}>Home</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('education'); }}>Education</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }}>Projects</a>
+                        <a href="#" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>Contact</a>
                         {isAuthenticated && (
                             <Link to="/admin" className="admin-link">Admin</Link>
                         )}
