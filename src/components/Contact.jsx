@@ -50,21 +50,14 @@ const Contact = () => {
                                 <FiMail className="icon" />
                                 <div>
                                     <strong>Email</strong>
-                                    <p>your.email@example.com</p>
-                                </div>
-                            </div>
-                            <div className="contact-item">
-                                <FiPhone className="icon" />
-                                <div>
-                                    <strong>Phone</strong>
-                                    <p>+1 234 567 8900</p>
+                                    <p>contact@shashanlumbhani.dev</p>
                                 </div>
                             </div>
                             <div className="contact-item">
                                 <FiMapPin className="icon" />
                                 <div>
                                     <strong>Location</strong>
-                                    <p>City, Country</p>
+                                    <p>Gujarat, India</p>
                                 </div>
                             </div>
                         </div>

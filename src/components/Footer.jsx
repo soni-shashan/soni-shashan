@@ -8,14 +8,11 @@ const Footer = () => {
             <div className="container">
                 <div className="footer-content">
                     <div className="social-links">
-                        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/shashan-lumbhani/ target="_blank" rel="noopener noreferrer">
                             <FiGithub />
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/shashan-lumbhani/" target="_blank" rel="noopener noreferrer">
                             <FiLinkedin />
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                            <FiTwitter />
                         </a>
                     </div>
                     <p>&copy; 2026 Your Name. All rights reserved.</p>
