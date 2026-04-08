@@ -269,21 +269,12 @@
     },
     {
       "degree": "Higher Secondary Certificate (HSC) — Science",
-      "institution": "Hari Om Vidhya Sankul",
+      "institution": "B.N.Virani Science Academy",
       "location": "Bhavnagar, Gujarat",
       "period": "2021 – 2023",
-      "grade": "Percentile: 93.83% · GUJCET: 91.56 Percentile",
-      "detail": "Physics, Chemistry, Maths, Biology",
+      "grade": "Percentile: 95.63% · GUJCET: 98.10 Percentile",
+      "detail": "Physics, Chemistry, Maths",
       "color": "#a78bfa"
-    },
-    {
-      "degree": "Secondary School Certificate (SSC)",
-      "institution": "Hari Om Vidhya Sankul",
-      "location": "Bhavnagar, Gujarat",
-      "period": "2020 – 2021",
-      "grade": "Percentile: 92.83%",
-      "detail": "CBSE Board",
-      "color": "#34d399"
     }
   ],
   
