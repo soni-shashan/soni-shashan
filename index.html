@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Shashan Lumbhani — AI Engineer & Software Developer</title>
+<title id="page-title">Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Cabinet+Grotesk:wght@300;400;500;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -34,238 +34,83 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 <script type="text/babel">
 const {useState,useEffect,useRef} = React;
 
-/* ── DATA ─────────────────────────────────────────────── */
-const PROJECTS = [
-  {
-    title:"H-NAS: Hardware-Aware Neural Architecture Search",
-    period:"Jan 2026 – Present",
-    tag:"Research",
-    tagColor:"#f472b6",
-    icon:"🧠",
-    desc:"Hardware-aware evolutionary search for efficient Inverted Residual Network design. Explored 3.8B MBConv-based architectures optimizing balanced accuracy, latency (<20ms), and FLOPS (<600M) using sandwich sampling, weight-sharing supernet, and focal loss for imbalanced datasets.",
-    tech:["Python","PyTorch","Neural Architecture Search","MBConv","Sandwich Sampling","Focal Loss"],
-    link:"https://github.com/soni-shashan",
-  },
-  {
-    title:"Codify: Smart Learning & Assessment Platform",
-    period:"2025",
-    tag:"Full-Stack",
-    tagColor:"#00d4ff",
-    icon:"📝",
-    desc:"Next-generation online examination ecosystem for institutions. Supports MCQs, coding challenges with live compiler, and subjective answers. Role-based management (admin/teacher/student) with automatic evaluation, result generation, and full exam lifecycle management.",
-    tech:["MongoDB","Express.js","React","Node.js","Live Compiler","Role-Based Auth","REST APIs"],
-    link:"https://github.com/soni-shashan",
-  },
-  {
-    title:"TNP Portal — CSE Department",
-    period:"2025",
-    tag:"Full-Stack",
-    tagColor:"#00d4ff",
-    icon:"🎓",
-    desc:"Training & Placement portal for CSPIT CSE Department. Students build professional profiles, access placement resources, and engage in peer-based competitive features. Faculty coordinators track progress and guide students through their placement journey.",
-    tech:["MongoDB","Express.js","React","Node.js","JWT","REST APIs"],
-    link:"https://github.com/soni-shashan",
-  },
-  {
-    title:"Fruit Quality Prediction",
-    period:"2024",
-    tag:"Deep Learning",
-    tagColor:"#34d399",
-    icon:"🍎",
-    desc:"Deep Learning application using Convolutional Neural Networks to classify quality of six fruits — Apple, Banana, Guava, Lime, Orange, and Pomegranate — into Good, Bad, or Mixed. CNN architecture extracts visual features for reliable real-time quality assessment.",
-    tech:["Python","TensorFlow","CNN","Deep Learning","Computer Vision","Image Classification"],
-    link:"https://github.com/soni-shashan",
-  },
-  {
-    title:"HAM10000 Skin Lesion Classification",
-    period:"Feb 2026 – Mar 2026",
-    tag:"Deep Learning",
-    tagColor:"#34d399",
-    icon:"🔬",
-    desc:"Medical image classification using the HAM10000 dataset — 10,015 dermatoscopic images across 7 skin lesion categories. Applied transfer learning, data augmentation, and class imbalance techniques for high-accuracy dermatology AI.",
-    tech:["Python","PyTorch","Transfer Learning","Data Augmentation","Medical AI","CNN"],
-    link:"https://github.com/soni-shashan",
-  },
-  {
-    title:"GIF to Boot Animation Converter",
-    period:"2023",
-    tag:"Tool",
-    tagColor:"#a78bfa",
-    icon:"🎨",
-    desc:"Python-based tool to convert GIF files into Android boot animations. Straightforward interface and commands making device customization accessible for all users. Published on GitHub with community adoption.",
-    tech:["Python","Image Processing","Android","PIL","CLI Tool"],
-    link:"https://github.com/soni-shashan/GIF-TO-BOOT-ANIMATION",
-    stars:2,
-  },
-];
+/* ── CONFIG LOADER ────────────────────────────────────── */
+let CONFIG = null;
 
-const CERTS = [
-  {
-    title:"Machine Learning with Python",
-    issuer:"IBM",
-    issued:"Aug 2025",
-    id:"KOILN3PDMO1K",
-    color:"#0f62fe",
-    emoji:"🐍",
-  },
-  {
-    title:"Design and Analysis of Algorithms",
-    issuer:"NPTEL",
-    issued:"Apr 2025",
-    id:"NPTEL25CS23S33460008801212057",
-    color:"#f59e0b",
-    emoji:"📐",
-  },
-  {
-    title:"Machine Learning",
-    issuer:"DeepLearning.AI",
-    issued:"Mar 2025",
-    id:"UPWYRNQGFZVX",
-    color:"#f472b6",
-    emoji:"🤖",
-  },
-  {
-    title:"Unsupervised Learning, Recommenders, Reinforcement Learning",
-    issuer:"DeepLearning.AI",
-    issued:"Mar 2025",
-    id:"1MG2XSH2MRK4",
-    color:"#a78bfa",
-    emoji:"🔍",
-  },
-  {
-    title:"Supervised Machine Learning: Regression and Classification",
-    issuer:"DeepLearning.AI",
-    issued:"Feb 2025",
-    id:"7C8G8BSW6ICF",
-    color:"#34d399",
-    emoji:"📊",
-  },
-  {
-    title:"Crash Course on Python",
-    issuer:"Google",
-    issued:"Jan 2025",
-    id:"VAZAY7W113MT",
-    color:"#4285f4",
-    emoji:"🐍",
-  },
-  {
-    title:"Data Structure And Algorithms Using Java",
-    issuer:"NPTEL",
-    issued:"Nov 2024",
-    id:"NPTEL24CS96S36290006903861262",
-    color:"#f59e0b",
-    emoji:"☕",
-  },
-  {
-    title:"Getting Started with AI on Jetson Nano",
-    issuer:"NVIDIA",
-    issued:"Jul 2024",
-    id:"EpYs13R7QpuUoYO_HamtVQ",
-    color:"#76b900",
-    emoji:"⚡",
-    skills:"Machine Learning, Artificial Intelligence (AI)",
-  },
-];
+function useConfig() {
+  const [config, setConfig] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const ACHIEVEMENTS = [
-  {
-    title:"2nd Runner Up — DUHacks 5.0 Hackathon",
-    org:"Organized by Dharmsinh Desai University",
-    period:"Jan 2026",
-    icon:"🏆",
-    color:"#fbbf24",
-    type:"Hackathon",
-  },
-  {
-    title:"2nd Runner Up — Innotech 2.0 Project Competition",
-    org:"Organized by CSPIT-CE Department",
-    period:"Oct 2025",
-    icon:"🥉",
-    color:"#f97316",
-    type:"Competition",
-  },
-  {
-    title:"Finalist — RoboFest 5.0 (GUJCOST)",
-    org:"Intelligent Ground Vehicle · Autonomous Rover",
-    period:"Oct 2025 – Present",
-    icon:"🤖",
-    color:"#34d399",
-    type:"Robotics",
-    detail:"Designed a skid-steer rover capable of dynamic obstacle avoidance and shortest-path planning using ROS navigation stacks.",
-  },
-  {
-    title:"CHARUSAT UGSF Fellow",
-    org:"Undergraduate Student Fellowship Program",
-    period:"Aug 2025 – Present",
-    icon:"🎓",
-    color:"#a78bfa",
-    type:"Fellowship",
-  },
-];
+  useEffect(() => {
+    fetch('config.json')
+      .then(res => res.json())
+      .then(data => {
+        CONFIG = data;
+        setConfig(data);
+        // Update page title
+        document.getElementById('page-title').textContent = 
+          `${data.personal.name} — ${data.personal.title}`;
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error('Failed to load config:', err);
+        setError(err);
+        setLoading(false);
+      });
+  }, []);
 
-const SKILLS = [
-  {cat:"AI / ML / GenAI",items:["Python","TensorFlow","PyTorch","Deep Learning","Machine Learning","GenAI","Neural Architecture Search","Computer Vision","NLP"]},
-  {cat:"MERN Stack",items:["MongoDB","Express.js","React","Node.js","REST APIs","JWT","Socket.io"]},
-  {cat:"Languages",items:["Python","Java","C++","JavaScript","TypeScript"]},
-  {cat:"Cloud & DevOps",items:["Cloud Computing","Docker","Git","GitHub","Linux","CI/CD"]},
-  {cat:"CS Fundamentals",items:["Data Structures","Algorithms","OOP","System Design","Problem Solving"]},
-  {cat:"Embedded / Robotics",items:["ROS","NVIDIA Jetson","Autonomous Navigation","SLAM","Skid-Steer Control"]},
-];
-
-const EDUCATION = [
-  {degree:"B.Tech — Computer Science Engineering",inst:"CHARUSAT (CSPIT)",period:"Jul 2023 – Jul 2027",grade:"CGPA: 9.68 (up to 5th Sem)",detail:"Computer Science · Anand, Gujarat",color:"#00d4ff"},
-  {degree:"HSC — Science (A Group)",inst:"B N Virani Science Academy",period:"Jun 2021 – Apr 2023",grade:"95.63 PR (HSC) · 98.10 PR (GUJCET) · 1303 ACPC Merit",detail:"Gujarat Board",color:"#34d399"},
-];
+  return { config, loading, error };
+}
 
 /* ── CURSOR ───────────────────────────────────────────── */
 function useCursor(){
   useEffect(()=>{
-    const c=document.getElementById('cursor'),r=document.getElementById('cursor-ring');
+    const c=document.getElementById('cursor');
+    const r=document.getElementById('cursor-ring');
     const move=e=>{
-      c.style.left=e.clientX+'px'; c.style.top=e.clientY+'px';
-      r.style.left=e.clientX+'px'; r.style.top=e.clientY+'px';
+      c.style.left=e.clientX+'px';
+      c.style.top=e.clientY+'px';
+      r.style.left=e.clientX+'px';
+      r.style.top=e.clientY+'px';
     };
-    window.addEventListener('mousemove',move);
-    return()=>window.removeEventListener('mousemove',move);
-  },[]);
-}
-
-/* ── REVEAL ───────────────────────────────────────────── */
-function Reveal({children,delay=0,style={}}){
-  const ref=useRef(); const [v,setV]=useState(false);
-  useEffect(()=>{
-    const ob=new IntersectionObserver(([e])=>{if(e.isIntersecting)setV(true)},{threshold:0.08});
-    if(ref.current)ob.observe(ref.current);
-    return()=>ob.disconnect();
-  },[]);
-  return <div ref={ref} style={{opacity:v?1:0,transform:v?'none':'translateY(28px)',transition:`opacity 0.7s ${delay}s ease,transform 0.7s ${delay}s ease`,...style}}>{children}</div>;
-}
-
-/* ── ANIM NUMBER ──────────────────────────────────────── */
-function AnimNum({val,suffix=''}){
-  const [n,setN]=useState(0); const ref=useRef();
-  useEffect(()=>{
-    const ob=new IntersectionObserver(([e])=>{
-      if(e.isIntersecting){
-        const num=parseFloat(val); let s=0; const step=num/40;
-        const t=setInterval(()=>{s+=step;if(s>=num){setN(num);clearInterval(t);}else setN(parseFloat(s.toFixed(2)));},30);
-        ob.disconnect();
-      }
+    const enter=()=>{c.style.transform='translate(-50%,-50%) scale(1.8)';r.style.width='50px';r.style.height='50px'};
+    const leave=()=>{c.style.transform='translate(-50%,-50%) scale(1)';r.style.width='36px';r.style.height='36px'};
+    document.addEventListener('mousemove',move);
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',enter);
+      el.addEventListener('mouseleave',leave);
     });
-    if(ref.current)ob.observe(ref.current);
-    return()=>ob.disconnect();
-  },[val]);
-  return <span ref={ref}>{n}{suffix}</span>;
+    return()=>{
+      document.removeEventListener('mousemove',move);
+      document.querySelectorAll('a,button').forEach(el=>{
+        el.removeEventListener('mouseenter',enter);
+        el.removeEventListener('mouseleave',leave);
+      });
+    };
+  },[]);
+}
+
+/* ── REVEAL ANIMATION ─────────────────────────────────── */
+function Reveal({children,delay=0}){
+  const ref=useRef();
+  const [visible,setVisible]=useState(false);
+  useEffect(()=>{
+    const obs=new IntersectionObserver(e=>{if(e[0].isIntersecting)setVisible(true)},{threshold:0.1});
+    if(ref.current)obs.observe(ref.current);
+    return()=>obs.disconnect();
+  },[]);
+  return <div ref={ref} style={{opacity:visible?1:0,transform:visible?'none':'translateY(24px)',transition:`all 0.7s ${delay}s`}}>{children}</div>;
 }
 
 /* ── SECTION HEADER ───────────────────────────────────── */
-function SectionHead({tag,title,accent,tagColor='#00d4ff'}){
+function SectionHead({tag,title,tagColor}){
   return(
-    <Reveal style={{marginBottom:'3.5rem'}}>
-      <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',color:tagColor,letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.75rem'}}>{tag}</div>
-      <h2 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.03em',lineHeight:1.1}}>
-        {title} <span style={{WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundImage:accent,backgroundClip:'text'}}>{''}</span>
-      </h2>
+    <Reveal>
+      <div style={{marginBottom:'3rem'}}>
+        <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',color:tagColor,letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.6rem'}}>{tag}</div>
+        <h2 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'clamp(2rem,4vw,2.8rem)',fontWeight:700,letterSpacing:'-0.03em',lineHeight:1.1}}>{title}</h2>
+      </div>
     </Reveal>
   );
 }
@@ -273,135 +118,118 @@ function SectionHead({tag,title,accent,tagColor='#00d4ff'}){
 /* ── NAV ──────────────────────────────────────────────── */
 function Nav(){
   const [scrolled,setScrolled]=useState(false);
-  const [mobileOpen,setMobileOpen]=useState(false);
   useEffect(()=>{
-    const h=()=>setScrolled(window.scrollY>50);
-    window.addEventListener('scroll',h);
-    return()=>window.removeEventListener('scroll',h);
+    const s=()=>setScrolled(window.scrollY>50);
+    window.addEventListener('scroll',s);
+    return()=>window.removeEventListener('scroll',s);
   },[]);
-  const links=['Skills','Projects','Certifications','Achievements','Education','Contact'];
+  
+  if (!CONFIG) return null;
+  
   return(
-    <nav style={{position:'fixed',top:0,left:0,right:0,zIndex:1000,padding:'1rem 3rem',display:'flex',alignItems:'center',justifyContent:'space-between',background:scrolled?'rgba(6,9,18,0.92)':'transparent',backdropFilter:scrolled?'blur(20px)':'none',borderBottom:scrolled?'1px solid rgba(0,212,255,0.07)':'none',transition:'all 0.3s'}}>
-      <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.9rem',color:'#00d4ff',letterSpacing:'0.04em'}}>
-        SL<span style={{color:'rgba(0,212,255,0.3)'}}>.dev</span>
-      </div>
-      <div style={{display:'flex',gap:'2rem',flexWrap:'wrap'}}>
-        {links.map(s=>(
-          <a key={s} href={`#${s.toLowerCase()}`} style={{color:'rgba(232,234,246,0.45)',fontSize:'0.78rem',textDecoration:'none',fontWeight:500,letterSpacing:'0.03em',transition:'color 0.2s',fontFamily:"'JetBrains Mono',monospace"}}
-          onMouseEnter={e=>e.target.style.color='#00d4ff'} onMouseLeave={e=>e.target.style.color='rgba(232,234,246,0.45)'}>{s}</a>
+    <nav style={{position:'fixed',top:0,left:0,right:0,zIndex:999,padding:'1.2rem 3rem',display:'flex',justifyContent:'space-between',alignItems:'center',background:scrolled?'rgba(6,9,18,0.85)':'transparent',backdropFilter:scrolled?'blur(12px)':'none',borderBottom:scrolled?'1px solid rgba(232,234,246,0.05)':'none',transition:'all 0.3s'}}>
+      <a href="#" style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.15rem',fontWeight:700,color:'#e8eaf6',textDecoration:'none',letterSpacing:'-0.02em'}}>
+        {CONFIG.personal.name.split(' ')[0]}<span style={{color:'#00d4ff'}}>.</span>
+      </a>
+      <div style={{display:'flex',gap:'2rem',alignItems:'center'}}>
+        {['projects','education','contact'].map((s,i)=>(
+          <a key={i} href={`#${s}`} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.75rem',color:'rgba(232,234,246,0.5)',textDecoration:'none',transition:'color 0.2s',letterSpacing:'0.02em'}}
+          onMouseEnter={e=>e.target.style.color='#00d4ff'}
+          onMouseLeave={e=>e.target.style.color='rgba(232,234,246,0.5)'}>{s}</a>
         ))}
       </div>
-      <a href="mailto:mr.shashansoni@gmail.com" style={{background:'transparent',border:'1px solid rgba(0,212,255,0.35)',color:'#00d4ff',padding:'0.45rem 1.1rem',borderRadius:'3px',fontSize:'0.78rem',fontWeight:500,textDecoration:'none',transition:'all 0.2s',fontFamily:"'JetBrains Mono',monospace",letterSpacing:'0.02em',whiteSpace:'nowrap'}}
-      onMouseEnter={e=>{e.target.style.background='rgba(0,212,255,0.08)';e.target.style.boxShadow='0 0 18px rgba(0,212,255,0.18)'}}
-      onMouseLeave={e=>{e.target.style.background='transparent';e.target.style.boxShadow='none'}}>hire_me()</a>
     </nav>
   );
 }
 
 /* ── HERO ─────────────────────────────────────────────── */
 function Hero(){
-  const [typed,setTyped]=useState('');
-  const full='AI Engineer · Full-Stack Dev · Researcher';
-  useEffect(()=>{
-    let i=0; const t=setInterval(()=>{setTyped(full.slice(0,i));i++;if(i>full.length)clearInterval(t);},52);
-    return()=>clearInterval(t);
-  },[]);
+  if (!CONFIG) return null;
+  const {personal, hero} = CONFIG;
+  
   return(
-    <section style={{minHeight:'100vh',display:'flex',alignItems:'center',padding:'8rem 3rem 4rem',maxWidth:1200,margin:'0 auto',position:'relative'}}>
-      {/* decorative rings */}
-      <div style={{position:'absolute',top:'18%',right:'5%',width:340,height:340,border:'1px solid rgba(0,212,255,0.05)',borderRadius:'50%',pointerEvents:'none'}}/>
-      <div style={{position:'absolute',top:'24%',right:'10%',width:210,height:210,border:'1px solid rgba(167,139,250,0.07)',borderRadius:'50%',pointerEvents:'none'}}/>
-      <div style={{position:'absolute',top:'30%',right:'15%',width:110,height:110,border:'1px solid rgba(0,212,255,0.1)',borderRadius:'50%',pointerEvents:'none'}}/>
-
-      <div style={{maxWidth:780}}>
-        {/* badge */}
-        <div style={{display:'inline-flex',alignItems:'center',gap:'0.6rem',background:'rgba(0,212,255,0.05)',border:'1px solid rgba(0,212,255,0.13)',padding:'0.4rem 1rem',borderRadius:'2px',fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',color:'rgba(0,212,255,0.75)',marginBottom:'2.5rem',animation:'fadeUp 0.6s ease both'}}>
-          <span style={{width:6,height:6,borderRadius:'50%',background:'#00d4ff',animation:'pulse 2s infinite',display:'inline-block',flexShrink:0}}/>
-          open_to_work · On-site · Hybrid · Remote
-        </div>
-
-        <h1 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'clamp(3rem,7vw,5.5rem)',fontWeight:700,lineHeight:1.0,letterSpacing:'-0.04em',marginBottom:'1.2rem',animation:'fadeUp 0.6s 0.1s ease both'}}>
-          Shashan<br/>
-          <span style={{WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundImage:'linear-gradient(135deg,#00d4ff,#a78bfa)',backgroundClip:'text'}}>Lumbhani</span>
-        </h1>
-
-        <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'1rem',color:'rgba(0,212,255,0.65)',marginBottom:'2rem',height:'1.6rem',animation:'fadeUp 0.6s 0.2s ease both'}}>
-          <span style={{color:'rgba(0,212,255,0.4)'}}>› </span>{typed}<span style={{animation:'blink 1s infinite'}}>_</span>
-        </div>
-
-        <p style={{fontSize:'1.05rem',color:'rgba(232,234,246,0.5)',lineHeight:1.85,maxWidth:580,marginBottom:'2.5rem',animation:'fadeUp 0.6s 0.3s ease both'}}>
-          CS Engineering student at <strong style={{color:'rgba(232,234,246,0.82)',fontWeight:500}}>CHARUSAT (CSPIT)</strong> · CGPA <strong style={{color:'#00d4ff',fontWeight:700}}>9.68</strong> · 
-          Passionate about AI/ML, Deep Learning, and building intelligent full-stack systems. 
-          Currently a <strong style={{color:'#a78bfa',fontWeight:500}}>UGSF Fellow</strong> at CHARUSAT and 
-          <strong style={{color:'#fbbf24',fontWeight:500}}> 2× Hackathon award winner</strong>.
-        </p>
-
-        <div style={{display:'flex',gap:'1rem',flexWrap:'wrap',animation:'fadeUp 0.6s 0.4s ease both'}}>
-          <a href="#projects" style={{background:'linear-gradient(135deg,#00d4ff,#0088aa)',color:'#060912',padding:'0.85rem 2rem',borderRadius:'3px',fontWeight:700,textDecoration:'none',fontSize:'0.9rem',letterSpacing:'0.02em',transition:'all 0.2s',boxShadow:'0 4px 30px rgba(0,212,255,0.28)'}}
-          onMouseEnter={e=>{e.target.style.transform='translateY(-2px)';e.target.style.boxShadow='0 8px 40px rgba(0,212,255,0.4)'}}
-          onMouseLeave={e=>{e.target.style.transform='none';e.target.style.boxShadow='0 4px 30px rgba(0,212,255,0.28)'}}>View Projects →</a>
-          <a href="https://linkedin.com/in/shashan-lumbhani" target="_blank" style={{background:'transparent',border:'1px solid rgba(232,234,246,0.14)',color:'rgba(232,234,246,0.65)',padding:'0.85rem 2rem',borderRadius:'3px',fontWeight:500,textDecoration:'none',fontSize:'0.9rem',transition:'all 0.2s'}}
-          onMouseEnter={e=>{e.target.style.borderColor='rgba(232,234,246,0.3)';e.target.style.color='#e8eaf6'}}
-          onMouseLeave={e=>{e.target.style.borderColor='rgba(232,234,246,0.14)';e.target.style.color='rgba(232,234,246,0.65)'}}>LinkedIn Profile</a>
-        </div>
-
-        <div style={{display:'flex',gap:'0.6rem',marginTop:'2.5rem',flexWrap:'wrap',animation:'fadeUp 0.6s 0.5s ease both'}}>
-          {[{l:'GitHub',u:'https://github.com/soni-shashan'},{l:'LeetCode',u:'https://leetcode.com/soni-shashan'},{l:'LinkedIn',u:'https://linkedin.com/in/shashan-lumbhani'},{l:'Instagram',u:'https://instagram.com/mr.shashan_official'}].map(s=>(
-            <a key={s.l} href={s.u} target="_blank" style={{color:'rgba(232,234,246,0.35)',textDecoration:'none',fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',padding:'0.38rem 0.75rem',border:'1px solid rgba(232,234,246,0.07)',borderRadius:'3px',transition:'all 0.2s',letterSpacing:'0.02em'}}
-            onMouseEnter={e=>{e.target.style.color='#00d4ff';e.target.style.borderColor='rgba(0,212,255,0.22)'}}
-            onMouseLeave={e=>{e.target.style.color='rgba(232,234,246,0.35)';e.target.style.borderColor='rgba(232,234,246,0.07)'}}>/{s.l.toLowerCase()}</a>
-          ))}
-        </div>
+    <section style={{minHeight:'100vh',display:'flex',alignItems:'center',padding:'0 3rem',position:'relative'}}>
+      <div style={{maxWidth:1200,margin:'0 auto',width:'100%'}}>
+        <Reveal>
+          <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.8rem',color:'#00d4ff',letterSpacing:'0.08em',marginBottom:'1rem'}}>{hero.greeting}</div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <h1 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'clamp(3rem,8vw,6rem)',fontWeight:700,letterSpacing:'-0.04em',lineHeight:1,marginBottom:'1.2rem'}}>
+            {personal.name.split(' ').map((word,i)=>(
+              <span key={i}>
+                {word}
+                {i===0&&<span style={{WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundImage:'linear-gradient(135deg,#00d4ff,#a78bfa)',backgroundClip:'text'}}>.</span>}
+                {i<personal.name.split(' ').length-1&&<br/>}
+              </span>
+            ))}
+          </h1>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <div style={{fontSize:'clamp(1rem,2vw,1.25rem)',color:'rgba(232,234,246,0.35)',fontWeight:500,marginBottom:'2rem',letterSpacing:'-0.01em'}}>{personal.tagline}</div>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <p style={{maxWidth:700,fontSize:'1.05rem',lineHeight:1.85,color:'rgba(232,234,246,0.45)',marginBottom:'3rem'}}>{hero.description}</p>
+        </Reveal>
+        <Reveal delay={0.4}>
+          <div style={{display:'flex',gap:'1.2rem',flexWrap:'wrap'}}>
+            <a href={hero.cta.primary.link} style={{background:'linear-gradient(135deg,#00d4ff,#a78bfa)',color:'#060912',padding:'1rem 2.5rem',borderRadius:'3px',fontWeight:700,textDecoration:'none',fontSize:'0.9rem',letterSpacing:'0.02em',boxShadow:'0 4px 30px rgba(0,212,255,0.22)',transition:'all 0.2s'}}
+            onMouseEnter={e=>{e.target.style.transform='translateY(-2px)';e.target.style.boxShadow='0 8px 40px rgba(0,212,255,0.32)'}}
+            onMouseLeave={e=>{e.target.style.transform='none';e.target.style.boxShadow='0 4px 30px rgba(0,212,255,0.22)'}}>{hero.cta.primary.text}</a>
+            <a href={hero.cta.secondary.link} style={{background:'rgba(232,234,246,0.03)',color:'#e8eaf6',padding:'1rem 2.5rem',borderRadius:'3px',border:'1px solid rgba(232,234,246,0.1)',fontWeight:600,textDecoration:'none',fontSize:'0.9rem',letterSpacing:'0.02em',transition:'all 0.2s'}}
+            onMouseEnter={e=>{e.target.style.background='rgba(232,234,246,0.06)';e.target.style.borderColor='rgba(232,234,246,0.2)'}}
+            onMouseLeave={e=>{e.target.style.background='rgba(232,234,246,0.03)';e.target.style.borderColor='rgba(232,234,246,0.1)'}}>{hero.cta.secondary.text}</a>
+          </div>
+        </Reveal>
       </div>
+      <div style={{position:'absolute',bottom:'2rem',left:'50%',transform:'translateX(-50%)',width:'1px',height:'60px',background:'linear-gradient(180deg,transparent,#00d4ff,transparent)',animation:'pulse 2s infinite'}}/>
     </section>
   );
 }
 
 /* ── STATS ────────────────────────────────────────────── */
 function Stats(){
-  const items=[
-    {val:'9.68',label:'CGPA (5th Sem)',suffix:''},
-    {val:'500',label:'LinkedIn Connections',suffix:'+'},
-    {val:'220',label:'LeetCode Problems',suffix:'+'},
-    {val:'8',label:'Certifications',suffix:''},
-    {val:'2',label:'Hackathon Awards',suffix:'×'},
-  ];
+  if (!CONFIG) return null;
+  
   return(
-    <div style={{borderTop:'1px solid rgba(232,234,246,0.05)',borderBottom:'1px solid rgba(232,234,246,0.05)',background:'rgba(0,212,255,0.015)',padding:'3rem'}}>
-      <div style={{maxWidth:1200,margin:'0 auto',display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(160px,1fr))',gap:'2rem'}}>
-        {items.map((it,i)=>(
+    <section style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))',gap:'1.2rem'}}>
+        {CONFIG.stats.map((s,i)=>(
           <Reveal key={i} delay={i*0.08}>
-            <div style={{textAlign:'center'}}>
-              <div style={{fontFamily:"'Clash Display',sans-serif",fontSize:'2.6rem',fontWeight:700,color:'#00d4ff',lineHeight:1,marginBottom:'0.4rem'}}>
-                <AnimNum val={it.val} suffix={it.suffix}/>
-              </div>
-              <div style={{fontSize:'0.72rem',color:'rgba(232,234,246,0.35)',fontFamily:"'JetBrains Mono',monospace",textTransform:'uppercase',letterSpacing:'0.08em'}}>{it.label}</div>
+            <div style={{background:'rgba(6,9,18,0.6)',border:`1px solid ${s.color}1e`,borderRadius:'6px',padding:'2rem 1.5rem',textAlign:'center',position:'relative',overflow:'hidden',transition:'all 0.25s'}}
+            onMouseEnter={e=>{e.currentTarget.style.transform='translateY(-5px)';e.currentTarget.style.borderColor=s.color+'40'}}
+            onMouseLeave={e=>{e.currentTarget.style.transform='none';e.currentTarget.style.borderColor=s.color+'1e'}}>
+              <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${s.color},transparent)`,opacity:0.7}}/>
+              <div style={{fontSize:'2.5rem',fontWeight:800,fontFamily:"'Clash Display',sans-serif",color:s.color,marginBottom:'0.3rem',letterSpacing:'-0.03em'}}>{s.value}</div>
+              <div style={{fontSize:'0.8rem',color:'rgba(232,234,246,0.4)',fontWeight:500,letterSpacing:'0.02em'}}>{s.label}</div>
             </div>
           </Reveal>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
 /* ── SKILLS ───────────────────────────────────────────── */
 function Skills(){
+  if (!CONFIG) return null;
+  
   return(
-    <section id="skills" style={{padding:'6rem 3rem',maxWidth:1200,margin:'0 auto'}}>
-      <SectionHead tag="// tech_stack" title="Technical Expertise" tagColor="#00d4ff"/>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:'1.2rem'}}>
-        {SKILLS.map((sk,i)=>(
-          <Reveal key={i} delay={i*0.06}>
-            <div style={{background:'rgba(232,234,246,0.018)',border:'1px solid rgba(232,234,246,0.07)',borderRadius:'4px',padding:'1.75rem',transition:'border-color 0.25s,transform 0.25s',position:'relative',overflow:'hidden'}}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(0,212,255,0.2)';e.currentTarget.style.transform='translateY(-3px)'}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(232,234,246,0.07)';e.currentTarget.style.transform='none'}}>
-              <div style={{position:'absolute',top:0,left:0,right:0,height:'1.5px',background:'linear-gradient(90deg,#00d4ff,transparent)',opacity:0.35}}/>
-              <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.66rem',color:'#00d4ff',textTransform:'uppercase',letterSpacing:'0.1em',marginBottom:'1.2rem'}}>{sk.cat}</div>
-              <div style={{display:'flex',flexWrap:'wrap',gap:'0.45rem'}}>
-                {sk.items.map((t,j)=>(
-                  <span key={j} style={{background:'rgba(0,212,255,0.05)',border:'1px solid rgba(0,212,255,0.1)',color:'rgba(232,234,246,0.7)',padding:'0.28rem 0.7rem',borderRadius:'2px',fontSize:'0.8rem',transition:'all 0.2s',cursor:'default'}}
-                  onMouseEnter={e=>{e.target.style.background='rgba(0,212,255,0.1)';e.target.style.color='#00d4ff'}}
-                  onMouseLeave={e=>{e.target.style.background='rgba(0,212,255,0.05)';e.target.style.color='rgba(232,234,246,0.7)'}}>{t}</span>
+    <section style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
+      <SectionHead tag="// skills.map()" title="Technical Arsenal" tagColor="#00d4ff"/>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'1.2rem'}}>
+        {Object.entries(CONFIG.skills).map(([cat,{items,color,icon}],i)=>(
+          <Reveal key={i} delay={i*0.1}>
+            <div style={{background:'rgba(6,9,18,0.6)',border:`1px solid ${color}1e`,borderRadius:'6px',padding:'1.8rem',position:'relative',overflow:'hidden',transition:'all 0.25s'}}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor=color+'40';e.currentTarget.style.transform='translateY(-3px)'}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor=color+'1e';e.currentTarget.style.transform='none'}}>
+              <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${color},transparent)`,opacity:0.7}}/>
+              <div style={{display:'flex',alignItems:'center',gap:'0.8rem',marginBottom:'1.2rem'}}>
+                <div style={{fontSize:'1.5rem'}}>{icon}</div>
+                <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.1rem',fontWeight:600,letterSpacing:'-0.02em'}}>{cat}</h3>
+              </div>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'0.5rem'}}>
+                {items.map((sk,j)=>(
+                  <span key={j} style={{background:`rgba(${color==='#f472b6'?'244,114,182':color==='#00d4ff'?'0,212,255':color==='#34d399'?'52,211,153':'167,139,250'},0.08)`,border:`1px solid ${color}1e`,borderRadius:'3px',padding:'0.4rem 0.9rem',fontSize:'0.75rem',color:'rgba(232,234,246,0.7)',fontFamily:"'JetBrains Mono',monospace",letterSpacing:'0.01em'}}>{sk}</span>
                 ))}
               </div>
             </div>
@@ -414,43 +242,36 @@ function Skills(){
 
 /* ── PROJECTS ─────────────────────────────────────────── */
 function Projects(){
+  if (!CONFIG) return null;
+  
   return(
-    <section id="projects" style={{padding:'6rem 3rem',background:'rgba(0,212,255,0.012)',borderTop:'1px solid rgba(232,234,246,0.04)'}}>
-      <div style={{maxWidth:1200,margin:'0 auto'}}>
-        <SectionHead tag="// projects.map()" title="What I've Built" tagColor="#a78bfa"/>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(330px,1fr))',gap:'1.4rem'}}>
-          {PROJECTS.map((p,i)=>(
-            <Reveal key={i} delay={i*0.07}>
-              <div style={{background:'rgba(6,9,18,0.85)',border:'1px solid rgba(232,234,246,0.07)',borderRadius:'6px',padding:'2rem',height:'100%',transition:'all 0.25s',position:'relative',overflow:'hidden',display:'flex',flexDirection:'column'}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor='rgba(167,139,250,0.28)';e.currentTarget.style.transform='translateY(-4px)';e.currentTarget.style.boxShadow='0 20px 50px rgba(0,0,0,0.45)'}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(232,234,246,0.07)';e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='none'}}>
-                <div style={{position:'absolute',top:0,left:0,width:'100%',height:'1px',background:'linear-gradient(90deg,transparent,#a78bfa,transparent)',opacity:0.35}}/>
-                <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:'1.25rem'}}>
-                  <div style={{width:46,height:46,background:'rgba(167,139,250,0.1)',border:'1px solid rgba(167,139,250,0.18)',borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.3rem'}}>{p.icon}</div>
-                  <div style={{display:'flex',gap:'0.4rem',alignItems:'center',flexWrap:'wrap',justifyContent:'flex-end'}}>
-                    {p.period&&<span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:'rgba(232,234,246,0.3)',padding:'0.2rem 0.5rem',border:'1px solid rgba(232,234,246,0.08)',borderRadius:'2px'}}>{p.period}</span>}
-                    <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:p.tagColor,padding:'0.2rem 0.55rem',background:`${p.tagColor}11`,border:`1px solid ${p.tagColor}28`,borderRadius:'2px'}}>{p.tag}</span>
-                  </div>
+    <section id="projects" style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
+      <SectionHead tag="// projects[]" title="Featured Work" tagColor="#f472b6"/>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(360px,1fr))',gap:'1.4rem'}}>
+        {CONFIG.projects.map((p,i)=>(
+          <Reveal key={i} delay={i*0.08}>
+            <a href={p.link} target="_blank" style={{display:'block',background:'rgba(6,9,18,0.6)',border:`1px solid ${p.tagColor}1e`,borderRadius:'6px',padding:'2rem',position:'relative',overflow:'hidden',textDecoration:'none',color:'inherit',transition:'all 0.25s'}}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor=p.tagColor+'40';e.currentTarget.style.transform='translateY(-5px)'}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor=p.tagColor+'1e';e.currentTarget.style.transform='none'}}>
+              <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${p.tagColor},transparent)`,opacity:0.7}}/>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:'1rem'}}>
+                <div style={{fontSize:'2rem'}}>{p.icon}</div>
+                <div style={{display:'flex',gap:'0.5rem',alignItems:'center'}}>
+                  <span style={{background:`rgba(${p.tagColor==='#f472b6'?'244,114,182':p.tagColor==='#00d4ff'?'0,212,255':p.tagColor==='#34d399'?'52,211,153':'167,139,250'},0.12)`,border:`1px solid ${p.tagColor}30`,borderRadius:'3px',padding:'0.3rem 0.8rem',fontSize:'0.65rem',color:p.tagColor,fontFamily:"'JetBrains Mono',monospace",fontWeight:600,letterSpacing:'0.04em',textTransform:'uppercase'}}>{p.tag}</span>
+                  {p.stars&&<span style={{fontSize:'0.75rem',color:'rgba(232,234,246,0.3)'}}>⭐ {p.stars}</span>}
                 </div>
-                <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.05rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.6rem',lineHeight:1.3}}>{p.title}</h3>
-                <p style={{color:'rgba(232,234,246,0.42)',fontSize:'0.84rem',lineHeight:1.7,marginBottom:'1.25rem',flex:1}}>{p.desc}</p>
-                <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem',marginBottom:p.link?'1rem':'0'}}>
-                  {p.tech.map((t,j)=>(
-                    <span key={j} style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.65rem',padding:'0.2rem 0.55rem',background:'rgba(167,139,250,0.06)',border:'1px solid rgba(167,139,250,0.1)',borderRadius:'2px',color:'rgba(167,139,250,0.65)'}}>{t}</span>
-                  ))}
-                </div>
-                {p.link&&(
-                  <a href={p.link} target="_blank" style={{display:'inline-flex',alignItems:'center',gap:'0.4rem',color:'rgba(232,234,246,0.28)',textDecoration:'none',fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',padding:'0.3rem 0.7rem',border:'1px solid rgba(232,234,246,0.1)',borderRadius:'3px',transition:'all 0.2s',width:'fit-content'}}
-                  onMouseEnter={e=>{e.currentTarget.style.color='#a78bfa';e.currentTarget.style.borderColor='rgba(167,139,250,0.3)'}}
-                  onMouseLeave={e=>{e.currentTarget.style.color='rgba(232,234,246,0.28)';e.currentTarget.style.borderColor='rgba(232,234,246,0.1)'}}>
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                    View on GitHub
-                  </a>
-                )}
               </div>
-            </Reveal>
-          ))}
-        </div>
+              <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.65rem',color:'rgba(232,234,246,0.25)',marginBottom:'0.6rem',letterSpacing:'0.03em'}}>{p.period}</div>
+              <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.2rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.8rem',lineHeight:1.3}}>{p.title}</h3>
+              <p style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',lineHeight:1.75,marginBottom:'1.2rem'}}>{p.description}</p>
+              <div style={{display:'flex',flexWrap:'wrap',gap:'0.4rem'}}>
+                {p.tech.map((t,j)=>(
+                  <span key={j} style={{background:'rgba(232,234,246,0.03)',border:'1px solid rgba(232,234,246,0.08)',borderRadius:'3px',padding:'0.25rem 0.65rem',fontSize:'0.68rem',color:'rgba(232,234,246,0.35)',fontFamily:"'JetBrains Mono',monospace"}}>{t}</span>
+                ))}
+              </div>
+            </a>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
@@ -458,29 +279,29 @@ function Projects(){
 
 /* ── CERTIFICATIONS ───────────────────────────────────── */
 function Certifications(){
+  if (!CONFIG) return null;
+  
   return(
-    <section id="certifications" style={{padding:'6rem 3rem',maxWidth:1200,margin:'0 auto'}}>
-      <SectionHead tag="// certifications.verify()" title="Licenses & Certifications" tagColor="#f59e0b"/>
-      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(285px,1fr))',gap:'1.2rem'}}>
-        {CERTS.map((c,i)=>(
-          <Reveal key={i} delay={i*0.08}>
-            <div style={{background:'rgba(6,9,18,0.7)',border:`1px solid ${c.color}20`,borderRadius:'6px',padding:'1.8rem',transition:'all 0.25s',position:'relative',overflow:'hidden'}}
-            onMouseEnter={e=>{e.currentTarget.style.borderColor=c.color+'44';e.currentTarget.style.transform='translateY(-3px)';e.currentTarget.style.boxShadow=`0 12px 40px ${c.color}15`}}
-            onMouseLeave={e=>{e.currentTarget.style.borderColor=c.color+'20';e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='none'}}>
+    <section style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
+      <SectionHead tag="// certifications{}" title="Credentials & Learning" tagColor="#fbbf24"/>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:'1rem'}}>
+        {CONFIG.certifications.map((c,i)=>(
+          <Reveal key={i} delay={i*0.05}>
+            <div style={{background:'rgba(6,9,18,0.6)',border:`1px solid ${c.color}1e`,borderRadius:'6px',padding:'1.3rem',position:'relative',overflow:'hidden',transition:'all 0.25s'}}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor=c.color+'40';e.currentTarget.style.transform='translateY(-3px)'}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor=c.color+'1e';e.currentTarget.style.transform='none'}}>
               <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${c.color},transparent)`,opacity:0.7}}/>
-              <div style={{display:'flex',alignItems:'flex-start',gap:'1rem',marginBottom:'1.2rem'}}>
-                <div style={{width:48,height:48,background:`${c.color}12`,border:`1px solid ${c.color}25`,borderRadius:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.4rem',flexShrink:0}}>{c.emoji}</div>
-                <div>
-                  <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1rem',fontWeight:600,letterSpacing:'-0.02em',lineHeight:1.3,marginBottom:'0.3rem'}}>{c.title}</h3>
-                  <div style={{fontSize:'0.82rem',color:'rgba(232,234,246,0.45)',marginBottom:'0.2rem'}}>{c.issuer}</div>
-                  <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:c.color,opacity:0.8}}>Issued {c.issued}</div>
+              <div style={{display:'flex',alignItems:'center',gap:'0.7rem',marginBottom:'0.8rem'}}>
+                <div style={{fontSize:'1.3rem'}}>{c.emoji}</div>
+                <div style={{flex:1}}>
+                  <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:c.color,opacity:0.7,letterSpacing:'0.04em',marginBottom:'0.15rem'}}>{c.issuer}</div>
+                  <h4 style={{fontSize:'0.88rem',fontWeight:600,lineHeight:1.3,letterSpacing:'-0.01em'}}>{c.title}</h4>
                 </div>
               </div>
-              <div style={{background:'rgba(232,234,246,0.03)',border:'1px solid rgba(232,234,246,0.06)',borderRadius:'3px',padding:'0.6rem 0.8rem'}}>
-                <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:'rgba(232,234,246,0.3)',letterSpacing:'0.04em',marginBottom:'0.15rem',textTransform:'uppercase'}}>Credential ID</div>
-                <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:'rgba(232,234,246,0.5)',wordBreak:'break-all'}}>{c.id}</div>
+              <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+                <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:'rgba(232,234,246,0.25)',letterSpacing:'0.02em'}}>{c.issued}</div>
+                <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.58rem',color:'rgba(232,234,246,0.18)',letterSpacing:'0.01em'}}>ID: {c.id}</div>
               </div>
-              {c.skills&&<div style={{marginTop:'0.75rem',fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:'rgba(232,234,246,0.35)'}}>Skills: {c.skills}</div>}
             </div>
           </Reveal>
         ))}
@@ -491,33 +312,32 @@ function Certifications(){
 
 /* ── ACHIEVEMENTS ─────────────────────────────────────── */
 function Achievements(){
+  if (!CONFIG) return null;
+  
   return(
-    <section id="achievements" style={{padding:'6rem 3rem',background:'rgba(251,191,36,0.012)',borderTop:'1px solid rgba(232,234,246,0.04)'}}>
-      <div style={{maxWidth:1200,margin:'0 auto'}}>
-        <SectionHead tag="// achievements.unlock()" title="Awards & Recognition" tagColor="#fbbf24"/>
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(280px,1fr))',gap:'1.25rem'}}>
-          {ACHIEVEMENTS.map((a,i)=>(
-            <Reveal key={i} delay={i*0.07}>
-              <div style={{background:'rgba(6,9,18,0.8)',border:`1px solid ${a.color}1a`,borderRadius:'6px',padding:'1.8rem',transition:'all 0.25s',position:'relative',overflow:'hidden'}}
-              onMouseEnter={e=>{e.currentTarget.style.borderColor=a.color+'38';e.currentTarget.style.transform='translateY(-3px)';e.currentTarget.style.boxShadow=`0 12px 40px ${a.color}12`}}
-              onMouseLeave={e=>{e.currentTarget.style.borderColor=a.color+'1a';e.currentTarget.style.transform='none';e.currentTarget.style.boxShadow='none'}}>
-                <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${a.color},transparent)`,opacity:0.6}}/>
-                <div style={{display:'flex',alignItems:'flex-start',gap:'1rem'}}>
-                  <div style={{fontSize:'2rem',lineHeight:1,flexShrink:0,marginTop:'0.1rem'}}>{a.icon}</div>
-                  <div>
-                    <div style={{display:'flex',alignItems:'center',gap:'0.5rem',marginBottom:'0.5rem',flexWrap:'wrap'}}>
-                      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.6rem',color:a.color,background:`${a.color}12`,border:`1px solid ${a.color}25`,padding:'0.15rem 0.5rem',borderRadius:'2px',textTransform:'uppercase',letterSpacing:'0.06em'}}>{a.type}</span>
-                      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:'rgba(232,234,246,0.3)'}}>{a.period}</span>
-                    </div>
-                    <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'0.95rem',fontWeight:600,letterSpacing:'-0.02em',lineHeight:1.3,marginBottom:'0.35rem'}}>{a.title}</h3>
-                    <div style={{fontSize:'0.8rem',color:'rgba(232,234,246,0.42)',lineHeight:1.5,marginBottom:a.detail?'0.5rem':'0'}}>{a.org}</div>
-                    {a.detail&&<div style={{fontSize:'0.78rem',color:'rgba(232,234,246,0.35)',lineHeight:1.6,fontStyle:'italic'}}>{a.detail}</div>}
-                  </div>
+    <section style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
+      <SectionHead tag="// achievements.filter()" title="Recognitions & Impact" tagColor="#34d399"/>
+      <div style={{display:'grid',gap:'1rem'}}>
+        {CONFIG.achievements.map((a,i)=>(
+          <Reveal key={i} delay={i*0.08}>
+            <div style={{background:'rgba(6,9,18,0.6)',border:`1px solid ${a.color}1e`,borderRadius:'6px',padding:'1.8rem',position:'relative',overflow:'hidden',transition:'all 0.25s'}}
+            onMouseEnter={e=>{e.currentTarget.style.borderColor=a.color+'40';e.currentTarget.style.transform='translateX(5px)'}}
+            onMouseLeave={e=>{e.currentTarget.style.borderColor=a.color+'1e';e.currentTarget.style.transform='none'}}>
+              <div style={{position:'absolute',left:0,top:0,bottom:0,width:'2px',background:`linear-gradient(180deg,${a.color},transparent)`}}/>
+              <div style={{display:'grid',gridTemplateColumns:'auto 1fr',gap:'1.2rem'}}>
+                <div style={{paddingTop:'0.1rem'}}>
+                  <div style={{width:42,height:42,background:`rgba(${a.color==='#f472b6'?'244,114,182':a.color==='#fbbf24'?'251,191,36':a.color==='#34d399'?'52,211,153':a.color==='#00d4ff'?'0,212,255':'167,139,250'},0.1)`,border:`1px solid ${a.color}20`,borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.2rem'}}>{a.icon}</div>
+                </div>
+                <div>
+                  <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.65rem',color:a.color,marginBottom:'0.3rem',letterSpacing:'0.04em'}}>{a.period}</div>
+                  <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.15rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.2rem'}}>{a.title}</h3>
+                  <div style={{color:'rgba(232,234,246,0.4)',fontSize:'0.82rem',marginBottom:'0.6rem'}}>{a.org}</div>
+                  <p style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',lineHeight:1.75}}>{a.desc}</p>
                 </div>
               </div>
-            </Reveal>
-          ))}
-        </div>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
@@ -525,36 +345,42 @@ function Achievements(){
 
 /* ── EXPERIENCE ───────────────────────────────────────── */
 function Experience(){
+  if (!CONFIG || !CONFIG.experience.length) return null;
+  
   return(
-    <section style={{padding:'6rem 3rem',maxWidth:1200,margin:'0 auto'}}>
+    <section style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
       <SectionHead tag="// experience[]" title="Work Experience" tagColor="#34d399"/>
-      <div style={{background:'rgba(52,211,153,0.025)',border:'1px solid rgba(52,211,153,0.12)',borderRadius:'6px',padding:'2rem',position:'relative',overflow:'hidden'}}>
-        <div style={{position:'absolute',left:0,top:0,bottom:0,width:'2px',background:'linear-gradient(180deg,#34d399,transparent)'}}/>
-        <div style={{display:'grid',gridTemplateColumns:'auto 1fr',gap:'1.5rem'}}>
-          <div style={{paddingTop:'0.1rem'}}>
-            <div style={{width:48,height:48,background:'rgba(52,211,153,0.1)',border:'1px solid rgba(52,211,153,0.2)',borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.4rem'}}>⚗️</div>
+      {CONFIG.experience.map((exp,i)=>(
+        <Reveal key={i}>
+          <div style={{background:`rgba(${exp.color==='#34d399'?'52,211,153':'0,212,255'},0.025)`,border:`1px solid ${exp.color}12`,borderRadius:'6px',padding:'2rem',position:'relative',overflow:'hidden',marginBottom:'1.5rem'}}>
+            <div style={{position:'absolute',left:0,top:0,bottom:0,width:'2px',background:`linear-gradient(180deg,${exp.color},transparent)`}}/>
+            <div style={{display:'grid',gridTemplateColumns:'auto 1fr',gap:'1.5rem'}}>
+              <div style={{paddingTop:'0.1rem'}}>
+                <div style={{width:48,height:48,background:`rgba(${exp.color==='#34d399'?'52,211,153':'0,212,255'},0.1)`,border:`1px solid ${exp.color}20`,borderRadius:'8px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'1.4rem'}}>{exp.icon}</div>
+              </div>
+              <div>
+                <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:exp.color,marginBottom:'0.35rem',letterSpacing:'0.04em'}}>{exp.period} · {exp.type}</div>
+                <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.3rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.2rem'}}>{exp.title}</h3>
+                <div style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',marginBottom:'0.75rem'}}>{exp.company} · {exp.location}</div>
+                <p style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',lineHeight:1.75}}>{exp.description}</p>
+              </div>
+            </div>
           </div>
-          <div>
-            <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:'#34d399',marginBottom:'0.35rem',letterSpacing:'0.04em'}}>Aug 2025 – Present · Full-time · On-site</div>
-            <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.3rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.2rem'}}>Undergraduate Student Fellow (UGSF)</h3>
-            <div style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',marginBottom:'0.75rem'}}>CHARUSAT · Anand, Gujarat, India</div>
-            <p style={{color:'rgba(232,234,246,0.45)',fontSize:'0.875rem',lineHeight:1.75}}>
-              Selected for the prestigious CHARUSAT Undergraduate Student Fellowship — contributing to cutting-edge research in AI/ML and computer science. Working on real-world deep learning problems, autonomous systems, and collaborative academic projects under faculty mentorship.
-            </p>
-          </div>
-        </div>
-      </div>
+        </Reveal>
+      ))}
     </section>
   );
 }
 
 /* ── EDUCATION ────────────────────────────────────────── */
 function Education(){
+  if (!CONFIG) return null;
+  
   return(
     <section id="education" style={{padding:'0 3rem 6rem',maxWidth:1200,margin:'0 auto'}}>
       <SectionHead tag="// education.log" title="Academic Background" tagColor="#a78bfa"/>
       <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(340px,1fr))',gap:'1.4rem'}}>
-        {EDUCATION.map((ed,i)=>(
+        {CONFIG.education.map((ed,i)=>(
           <Reveal key={i} delay={i*0.1}>
             <div style={{background:'rgba(6,9,18,0.6)',border:`1px solid ${ed.color}1e`,borderRadius:'6px',padding:'2rem',position:'relative',overflow:'hidden',transition:'all 0.25s'}}
             onMouseEnter={e=>{e.currentTarget.style.borderColor=ed.color+'40';e.currentTarget.style.transform='translateY(-3px)'}}
@@ -562,7 +388,7 @@ function Education(){
               <div style={{position:'absolute',top:0,left:0,right:0,height:'2px',background:`linear-gradient(90deg,${ed.color},transparent)`,opacity:0.7}}/>
               <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.67rem',color:ed.color,letterSpacing:'0.08em',marginBottom:'0.7rem',opacity:0.8}}>{ed.period}</div>
               <h3 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.15rem',fontWeight:600,letterSpacing:'-0.02em',marginBottom:'0.4rem'}}>{ed.degree}</h3>
-              <div style={{color:'rgba(232,234,246,0.5)',fontSize:'0.875rem',marginBottom:'1rem'}}>{ed.inst} · {ed.detail}</div>
+              <div style={{color:'rgba(232,234,246,0.5)',fontSize:'0.875rem',marginBottom:'1rem'}}>{ed.institution} · {ed.detail}</div>
               <div style={{background:`rgba(${ed.color==='#00d4ff'?'0,212,255':ed.color==='#a78bfa'?'167,139,250':'52,211,153'},0.07)`,border:`1px solid ${ed.color}1e`,borderRadius:'3px',padding:'0.7rem 1rem',fontFamily:"'JetBrains Mono',monospace",fontSize:'0.76rem',color:ed.color,lineHeight:1.7}}>{ed.grade}</div>
             </div>
           </Reveal>
@@ -574,6 +400,9 @@ function Education(){
 
 /* ── CONTACT ──────────────────────────────────────────── */
 function Contact(){
+  if (!CONFIG) return null;
+  const {contact, personal} = CONFIG;
+  
   return(
     <section id="contact" style={{borderTop:'1px solid rgba(232,234,246,0.05)',background:'rgba(0,212,255,0.01)',padding:'6rem 3rem'}}>
       <div style={{maxWidth:1200,margin:'0 auto',display:'grid',gridTemplateColumns:'1fr 1fr',gap:'5rem',alignItems:'center'}}>
@@ -581,32 +410,31 @@ function Contact(){
           <div>
             <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.7rem',color:'#00d4ff',letterSpacing:'0.12em',textTransform:'uppercase',marginBottom:'0.75rem'}}>// contact.init()</div>
             <h2 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,letterSpacing:'-0.03em',lineHeight:1.1,marginBottom:'1.5rem'}}>
-              Let's <span style={{WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundImage:'linear-gradient(135deg,#00d4ff,#a78bfa)',backgroundClip:'text'}}>Connect</span>
+              {contact.title.split(' ').map((word,i)=>(
+                <span key={i}>
+                  {i===1?<span style={{WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent',backgroundImage:'linear-gradient(135deg,#00d4ff,#a78bfa)',backgroundClip:'text'}}>{word}</span>:word}
+                  {' '}
+                </span>
+              ))}
             </h2>
             <p style={{color:'rgba(232,234,246,0.45)',fontSize:'1rem',lineHeight:1.85,marginBottom:'2.5rem'}}>
-              Open to AI/ML research collaborations, full-stack project discussions, internship opportunities, and hackathon teaming. Based in <strong style={{color:'rgba(232,234,246,0.7)',fontWeight:500}}>Bhavnagar, Gujarat</strong> — open to India +4 more, remote & hybrid.
+              {contact.description} Based in <strong style={{color:'rgba(232,234,246,0.7)',fontWeight:500}}>{personal.location}</strong> — {personal.availability}.
             </p>
-            <a href="mailto:mr.shashansoni@gmail.com" style={{display:'inline-block',background:'linear-gradient(135deg,#00d4ff,#a78bfa)',color:'#060912',padding:'0.9rem 2.2rem',borderRadius:'3px',fontWeight:700,textDecoration:'none',fontSize:'0.9rem',letterSpacing:'0.02em',boxShadow:'0 4px 30px rgba(0,212,255,0.22)',transition:'all 0.2s'}}
+            <a href={`mailto:${personal.email}`} style={{display:'inline-block',background:'linear-gradient(135deg,#00d4ff,#a78bfa)',color:'#060912',padding:'0.9rem 2.2rem',borderRadius:'3px',fontWeight:700,textDecoration:'none',fontSize:'0.9rem',letterSpacing:'0.02em',boxShadow:'0 4px 30px rgba(0,212,255,0.22)',transition:'all 0.2s'}}
             onMouseEnter={e=>{e.target.style.transform='translateY(-2px)';e.target.style.boxShadow='0 8px 40px rgba(0,212,255,0.32)'}}
-            onMouseLeave={e=>{e.target.style.transform='none';e.target.style.boxShadow='0 4px 30px rgba(0,212,255,0.22)'}}>Send Message →</a>
+            onMouseLeave={e=>{e.target.style.transform='none';e.target.style.boxShadow='0 4px 30px rgba(0,212,255,0.22)'}}>{contact.ctaText}</a>
           </div>
         </Reveal>
         <Reveal delay={0.15}>
           <div style={{display:'flex',flexDirection:'column',gap:'0.7rem'}}>
-            {[
-              {label:'Email',val:'mr.shashansoni@gmail.com',url:'mailto:mr.shashansoni@gmail.com',icon:'✉',color:'#00d4ff'},
-              {label:'LinkedIn',val:'in/shashan-lumbhani · 500+',url:'https://linkedin.com/in/shashan-lumbhani',icon:'💼',color:'#0077b5'},
-              {label:'GitHub',val:'soni-shashan · 21 repos',url:'https://github.com/soni-shashan',icon:'🐙',color:'#a78bfa'},
-              {label:'LeetCode',val:'soni-shashan · 220+ solved',url:'https://leetcode.com/soni-shashan',icon:'⚡',color:'#fbbf24'},
-              {label:'Instagram',val:'@mr.shashan_official',url:'https://instagram.com/mr.shashan_official',icon:'📸',color:'#f472b6'},
-            ].map((c,i)=>(
+            {contact.links.map((c,i)=>(
               <a key={i} href={c.url} target="_blank" style={{display:'flex',alignItems:'center',gap:'1rem',padding:'0.9rem 1.2rem',background:'rgba(232,234,246,0.02)',border:'1px solid rgba(232,234,246,0.07)',borderRadius:'4px',textDecoration:'none',color:'#e8eaf6',transition:'all 0.2s'}}
               onMouseEnter={e=>{e.currentTarget.style.borderColor=c.color+'3a';e.currentTarget.style.transform='translateX(5px)';e.currentTarget.style.background='rgba(232,234,246,0.04)'}}
               onMouseLeave={e=>{e.currentTarget.style.borderColor='rgba(232,234,246,0.07)';e.currentTarget.style.transform='none';e.currentTarget.style.background='rgba(232,234,246,0.02)'}}>
                 <div style={{width:36,height:36,background:`${c.color}10`,border:`1px solid ${c.color}20`,borderRadius:'6px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'0.95rem',flexShrink:0}}>{c.icon}</div>
                 <div>
                   <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.62rem',color:'rgba(232,234,246,0.3)',textTransform:'uppercase',letterSpacing:'0.08em',lineHeight:1,marginBottom:'0.18rem'}}>{c.label}</div>
-                  <div style={{fontSize:'0.84rem',fontWeight:500,color:'rgba(232,234,246,0.75)'}}>{c.val}</div>
+                  <div style={{fontSize:'0.84rem',fontWeight:500,color:'rgba(232,234,246,0.75)'}}>{c.value}</div>
                 </div>
                 <div style={{marginLeft:'auto',color:'rgba(232,234,246,0.18)',fontSize:'0.8rem'}}>→</div>
               </a>
@@ -620,17 +448,45 @@ function Contact(){
 
 /* ── FOOTER ───────────────────────────────────────────── */
 function Footer(){
+  if (!CONFIG) return null;
+  
   return(
     <footer style={{borderTop:'1px solid rgba(232,234,246,0.05)',padding:'2rem 3rem',display:'flex',justifyContent:'space-between',alignItems:'center',flexWrap:'wrap',gap:'1rem'}}>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.72rem',color:'rgba(232,234,246,0.22)'}}>© 2025 Shashan Lumbhani · Bhavnagar, Gujarat, India</span>
-      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:'rgba(232,234,246,0.18)',fontStyle:'italic'}}>"Think Simple. Work Smarter."</span>
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.72rem',color:'rgba(232,234,246,0.22)'}}>{CONFIG.footer.copyright}</span>
+      <span style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.68rem',color:'rgba(232,234,246,0.18)',fontStyle:'italic'}}>"{CONFIG.personal.quote}"</span>
     </footer>
   );
 }
 
 /* ── APP ──────────────────────────────────────────────── */
 function App(){
+  const {config, loading, error} = useConfig();
   useCursor();
+  
+  if (loading) {
+    return (
+      <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center'}}>
+        <div style={{textAlign:'center'}}>
+          <div style={{fontSize:'2rem',marginBottom:'1rem',animation:'spin 2s linear infinite'}}>⚙️</div>
+          <div style={{fontFamily:"'JetBrains Mono',monospace",fontSize:'0.9rem',color:'#00d4ff'}}>Loading portfolio...</div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div style={{minHeight:'100vh',display:'flex',alignItems:'center',justifyContent:'center',padding:'2rem'}}>
+        <div style={{textAlign:'center',maxWidth:500}}>
+          <div style={{fontSize:'3rem',marginBottom:'1rem'}}>⚠️</div>
+          <h2 style={{fontFamily:"'Clash Display',sans-serif",fontSize:'1.5rem',marginBottom:'1rem',color:'#ff6b6b'}}>Failed to Load Configuration</h2>
+          <p style={{color:'rgba(232,234,246,0.6)',marginBottom:'1rem'}}>Make sure <code>config.json</code> is in the same directory as this HTML file.</p>
+          <pre style={{background:'rgba(0,0,0,0.3)',padding:'1rem',borderRadius:'6px',fontSize:'0.75rem',textAlign:'left',overflow:'auto'}}>{error.message}</pre>
+        </div>
+      </div>
+    );
+  }
+  
   return(
     <>
       <Nav/>

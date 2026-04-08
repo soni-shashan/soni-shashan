@@ -1,0 +1,336 @@
+{
+  "personal": {
+    "name": "Shashan Lumbhani",
+    "title": "AI Engineer & Software Developer",
+    "tagline": "Machine Learning | Deep Learning | Full-Stack Development",
+    "bio": "Turning complex problems into elegant solutions through the power of AI and clean code.",
+    "location": "Bhavnagar, Gujarat",
+    "country": "India",
+    "email": "mr.shashansoni@gmail.com",
+    "availability": "Open to India +4 more, remote & hybrid",
+    "quote": "Think Simple. Work Smarter.",
+    "resumeUrl": "#"
+  },
+  
+  "hero": {
+    "greeting": "Hello, I'm",
+    "description": "AI Engineer specializing in Deep Learning, Neural Architecture Search, and Full-Stack Development. Currently pursuing B.Tech in Computer Science & Engineering at CHARUSAT, building intelligent systems that bridge research and real-world impact.",
+    "cta": {
+      "primary": {
+        "text": "View Projects",
+        "link": "#projects"
+      },
+      "secondary": {
+        "text": "Download Resume",
+        "link": "#"
+      }
+    }
+  },
+  
+  "stats": [
+    { "value": "21+", "label": "GitHub Repositories", "color": "#a78bfa" },
+    { "value": "220+", "label": "LeetCode Problems", "color": "#fbbf24" },
+    { "value": "9+", "label": "Certifications", "color": "#f472b6" },
+    { "value": "1400+", "label": "GitHub Contributions", "color": "#00d4ff" }
+  ],
+  
+  "skills": {
+    "AI/ML": {
+      "items": ["PyTorch", "TensorFlow", "Scikit-Learn", "Neural Architecture Search", "Transfer Learning", "Computer Vision", "NLP", "Reinforcement Learning"],
+      "color": "#f472b6",
+      "icon": "🧠"
+    },
+    "Languages": {
+      "items": ["Python", "JavaScript", "C++", "Java", "SQL", "HTML/CSS"],
+      "color": "#00d4ff",
+      "icon": "💻"
+    },
+    "Full-Stack": {
+      "items": ["React", "Node.js", "Express.js", "MongoDB", "REST APIs", "JWT Auth", "Next.js", "Tailwind CSS"],
+      "color": "#34d399",
+      "icon": "🚀"
+    },
+    "Tools": {
+      "items": ["Git", "Docker", "Linux", "VS Code", "Jupyter", "Postman", "Firebase", "Vercel"],
+      "color": "#a78bfa",
+      "icon": "🛠️"
+    }
+  },
+  
+  "projects": [
+    {
+      "title": "H-NAS: Hardware-Aware Neural Architecture Search",
+      "period": "Jan 2026 – Present",
+      "tag": "Research",
+      "tagColor": "#f472b6",
+      "icon": "🧠",
+      "description": "Hardware-aware evolutionary search for efficient Inverted Residual Network design. Explored 3.8B MBConv-based architectures optimizing balanced accuracy, latency (<20ms), and FLOPS (<600M) using sandwich sampling, weight-sharing supernet, and focal loss for imbalanced datasets.",
+      "tech": ["Python", "PyTorch", "Neural Architecture Search", "MBConv", "Sandwich Sampling", "Focal Loss"],
+      "link": "https://github.com/soni-shashan",
+      "stars": null
+    },
+    {
+      "title": "Codify: Smart Learning & Assessment Platform",
+      "period": "2025",
+      "tag": "Full-Stack",
+      "tagColor": "#00d4ff",
+      "icon": "📝",
+      "description": "Next-generation online examination ecosystem for institutions. Supports MCQs, coding challenges with live compiler, and subjective answers. Role-based management (admin/teacher/student) with automatic evaluation, result generation, and full exam lifecycle management.",
+      "tech": ["MongoDB", "Express.js", "React", "Node.js", "Live Compiler", "Role-Based Auth", "REST APIs"],
+      "link": "https://github.com/soni-shashan",
+      "stars": null
+    },
+    {
+      "title": "TNP Portal — CSE Department",
+      "period": "2025",
+      "tag": "Full-Stack",
+      "tagColor": "#00d4ff",
+      "icon": "🎓",
+      "description": "Training & Placement portal for CSPIT CSE Department. Students build professional profiles, access placement resources, and engage in peer-based competitive features. Faculty coordinators track progress and guide students through their placement journey.",
+      "tech": ["MongoDB", "Express.js", "React", "Node.js", "JWT", "REST APIs"],
+      "link": "https://github.com/soni-shashan",
+      "stars": null
+    },
+    {
+      "title": "Fruit Quality Prediction",
+      "period": "2024",
+      "tag": "Deep Learning",
+      "tagColor": "#34d399",
+      "icon": "🍎",
+      "description": "Deep Learning application using Convolutional Neural Networks to classify quality of six fruits — Apple, Banana, Guava, Lime, Orange, and Pomegranate — into Good, Bad, or Mixed. CNN architecture extracts visual features for reliable real-time quality assessment.",
+      "tech": ["Python", "TensorFlow", "CNN", "Deep Learning", "Computer Vision", "Image Classification"],
+      "link": "https://github.com/soni-shashan",
+      "stars": null
+    },
+    {
+      "title": "HAM10000 Skin Lesion Classification",
+      "period": "Feb 2026 – Mar 2026",
+      "tag": "Deep Learning",
+      "tagColor": "#34d399",
+      "icon": "🔬",
+      "description": "Medical image classification using the HAM10000 dataset — 10,015 dermatoscopic images across 7 skin lesion categories. Applied transfer learning, data augmentation, and class imbalance techniques for high-accuracy dermatology AI.",
+      "tech": ["Python", "PyTorch", "Transfer Learning", "Data Augmentation", "Medical AI", "CNN"],
+      "link": "https://github.com/soni-shashan",
+      "stars": null
+    },
+    {
+      "title": "GIF to Boot Animation Converter",
+      "period": "2023",
+      "tag": "Tool",
+      "tagColor": "#a78bfa",
+      "icon": "🎨",
+      "description": "Python-based tool to convert GIF files into Android boot animations. Straightforward interface and commands making device customization accessible for all users. Published on GitHub with community adoption.",
+      "tech": ["Python", "Image Processing", "Android", "PIL", "CLI Tool"],
+      "link": "https://github.com/soni-shashan/GIF-TO-BOOT-ANIMATION",
+      "stars": 2
+    }
+  ],
+  
+  "certifications": [
+    {
+      "title": "Machine Learning with Python",
+      "issuer": "IBM",
+      "issued": "Aug 2025",
+      "id": "KOILN3PDMO1K",
+      "color": "#0f62fe",
+      "emoji": "🐍"
+    },
+    {
+      "title": "Design and Analysis of Algorithms",
+      "issuer": "NPTEL",
+      "issued": "Apr 2025",
+      "id": "NPTEL25CS23S33460008801212057",
+      "color": "#f59e0b",
+      "emoji": "📐"
+    },
+    {
+      "title": "Machine Learning",
+      "issuer": "DeepLearning.AI",
+      "issued": "Mar 2025",
+      "id": "UPWYRNQGFZVX",
+      "color": "#f472b6",
+      "emoji": "🤖"
+    },
+    {
+      "title": "Unsupervised Learning, Recommenders, Reinforcement Learning",
+      "issuer": "DeepLearning.AI",
+      "issued": "Mar 2025",
+      "id": "1MG2XSH2MRK4",
+      "color": "#a78bfa",
+      "emoji": "🔍"
+    },
+    {
+      "title": "Supervised Machine Learning: Regression and Classification",
+      "issuer": "DeepLearning.AI",
+      "issued": "Feb 2025",
+      "id": "34ZIXFMOWQTL",
+      "color": "#34d399",
+      "emoji": "📊"
+    },
+    {
+      "title": "Advanced Learning Algorithms",
+      "issuer": "DeepLearning.AI",
+      "issued": "Feb 2025",
+      "id": "T7YRJVOXLMQK",
+      "color": "#f472b6",
+      "emoji": "⚡"
+    },
+    {
+      "title": "Python for Data Science, AI & Development",
+      "issuer": "IBM",
+      "issued": "Jul 2024",
+      "id": "MFCQG32X1YMN",
+      "color": "#0f62fe",
+      "emoji": "🐍"
+    },
+    {
+      "title": "Crash Course on Python",
+      "issuer": "Google",
+      "issued": "Jul 2023",
+      "id": "TQBYDYHNVBFM",
+      "color": "#34a853",
+      "emoji": "🎓"
+    },
+    {
+      "title": "Fundamentals of Digital Marketing",
+      "issuer": "Google",
+      "issued": "Apr 2023",
+      "id": "PLE KJH GNH",
+      "color": "#4285f4",
+      "emoji": "📱"
+    }
+  ],
+  
+  "achievements": [
+    {
+      "title": "CHARUSAT Undergraduate Student Fellowship",
+      "org": "CHARUSAT",
+      "period": "Aug 2025 – Present",
+      "desc": "Selected for prestigious research fellowship to contribute to cutting-edge AI/ML research. Working on autonomous systems and deep learning under faculty mentorship.",
+      "color": "#f472b6",
+      "icon": "⚗️"
+    },
+    {
+      "title": "Finalist - Robofest Gujarat 5.0",
+      "org": "Gujarat Council on Science and Technology (GUJCOST)",
+      "period": "July 2025 - March 2026",
+      "desc": "Finalist at RoboFest 5.0 (GUJCOST), showcasing advanced autonomous navigation capabilities in a competitive robotics event. Demonstrated innovative solutions in real-world challenges, earning recognition for technical excellence and creativity.",
+      "color": "#fbbf24",
+      "icon": "🏆"
+    },
+    {
+      "title": "2nd Runner Up — DUHacks 5.0 Hackathon",
+      "org": "Dharmsinh Desai University",
+      "period": "Jan 2026",
+      "desc": "Secure runner-up position in national Hackthon event competing against teams from across India. Presented Application solution with AI integration for real-world problem-solving.",
+      "color": "#34d399",
+      "icon": "🥈"
+    },
+    {
+      "title": "2nd Runner Up — Innotech 2.0 Project Competitionn",
+      "org": "Charotar University of Science & Technology",
+      "period": "Oct 2025",
+      "desc": "Secured runner-up position in university-wide ideation competition.",
+      "color": "#00d4ff",
+      "icon": "🥈"
+    },
+    {
+      "title": "Open Source Contributor",
+      "org": "Hacktoberfest 2024",
+      "period": "Oct 2024",
+      "desc": "Active contributor to open-source projects with 3+ public repositories. Tools and utilities adopted by developer community with growing star count.",
+      "color": "#00d4ff",
+      "icon": "🌟"
+    }
+  ],
+  
+  "experience": [
+    {
+      "title": "Undergraduate Student Fellow (UGSF)",
+      "company": "CHARUSAT",
+      "location": "Anand, Gujarat, India",
+      "period": "Aug 2025 – Present",
+      "type": "Full-time · On-site",
+      "description": "Selected for the prestigious CHARUSAT Undergraduate Student Fellowship — contributing to cutting-edge research in AI/ML and computer science. Working on real-world deep learning problems, autonomous systems, and collaborative academic projects under faculty mentorship.",
+      "icon": "⚗️",
+      "color": "#34d399"
+    }
+  ],
+  
+  "education": [
+    {
+      "degree": "B.Tech in Computer Science & Engineering",
+      "institution": "Charotar University of Science & Technology (CHARUSAT)",
+      "location": "Anand, Gujarat",
+      "period": "2023 – 2027",
+      "grade": "CGPA: 9.09/10.0 · Ranked #1 in CSE Batch",
+      "detail": "Specialization in AI/ML",
+      "color": "#00d4ff"
+    },
+    {
+      "degree": "Higher Secondary Certificate (HSC) — Science",
+      "institution": "Hari Om Vidhya Sankul",
+      "location": "Bhavnagar, Gujarat",
+      "period": "2021 – 2023",
+      "grade": "Percentile: 93.83% · GUJCET: 91.56 Percentile",
+      "detail": "Physics, Chemistry, Maths, Biology",
+      "color": "#a78bfa"
+    },
+    {
+      "degree": "Secondary School Certificate (SSC)",
+      "institution": "Hari Om Vidhya Sankul",
+      "location": "Bhavnagar, Gujarat",
+      "period": "2020 – 2021",
+      "grade": "Percentile: 92.83%",
+      "detail": "CBSE Board",
+      "color": "#34d399"
+    }
+  ],
+  
+  "contact": {
+    "title": "Let's Connect",
+    "description": "Open to AI/ML research collaborations, full-stack project discussions, internship opportunities, and hackathon teaming.",
+    "ctaText": "Send Message →",
+    "links": [
+      {
+        "label": "Email",
+        "value": "mr.shashansoni@gmail.com",
+        "url": "mailto:mr.shashansoni@gmail.com",
+        "icon": "✉",
+        "color": "#00d4ff"
+      },
+      {
+        "label": "LinkedIn",
+        "value": "in/shashan-lumbhani · 500+",
+        "url": "https://linkedin.com/in/shashan-lumbhani",
+        "icon": "💼",
+        "color": "#0077b5"
+      },
+      {
+        "label": "GitHub",
+        "value": "soni-shashan · 21 repos",
+        "url": "https://github.com/soni-shashan",
+        "icon": "🐙",
+        "color": "#a78bfa"
+      },
+      {
+        "label": "LeetCode",
+        "value": "soni-shashan · 220+ solved",
+        "url": "https://leetcode.com/soni-shashan",
+        "icon": "⚡",
+        "color": "#fbbf24"
+      },
+      {
+        "label": "Instagram",
+        "value": "@mr.shashan_official",
+        "url": "https://instagram.com/mr.shashan_official",
+        "icon": "📸",
+        "color": "#f472b6"
+      }
+    ]
+  },
+  
+  "footer": {
+    "copyright": "@ 2026 Shashan Lumbhani · Bhavnagar, Gujarat, India"
+  }
+}
