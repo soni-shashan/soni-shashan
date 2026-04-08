@@ -1,71 +1,200 @@
-<h1 align="center">
-  Hi there! <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXpweWo3N3Y0NmZlY3VydGFwa3Q0Zml6aW5ocXRheGpyMm94dW9idSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/du3J3cXyzhj75IOgvA/giphy.webp" width="30"> I'm Shashan Lumbhani
-</h1>
+<div align="center">
 
-<h3 align="center">
-  A passionate Computer Science Engineer from India 🇮🇳
-</h3>
+```
+███████╗██╗  ██╗ █████╗ ███████╗██╗  ██╗ █████╗ ███╗   ██╗
+██╔════╝██║  ██║██╔══██╗██╔════╝██║  ██║██╔══██╗████╗  ██║
+███████╗███████║███████║███████╗███████║███████║██╔██╗ ██║
+╚════██║██╔══██║██╔══██║╚════██║██╔══██║██╔══██║██║╚██╗██║
+███████║██║  ██║██║  ██║███████║██║  ██║██║  ██║██║ ╚████║
+╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
+```
 
-<p align="center">
-  <img src="https://github.com/soni-shashan/soni-shashan/blob/main/.github/programmer.gif" alt="Programmer GIF" width="500">
+# Hey there! 👋 I'm Shashan Lumbhani
+
+### 🧠 AI Engineer & Software Developer
+
+**Machine Learning · Deep Learning · Full-Stack Development**
+
+> *"Think Simple. Work Smarter."*
+
+🌍 **Bhavnagar, Gujarat, India** &nbsp;|&nbsp; 💼 **Open to India + Remote & Hybrid**
+
+<p>
+  <a href="https://linkedin.com/in/shashan-lumbhani">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  </a>
+  <a href="https://github.com/soni-shashan">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <a href="https://www.leetcode.com/soni-shashan">
+    <img src="https://img.shields.io/badge/LeetCode-220%2B_Solved-FFA116?style=for-the-badge&logo=leetcode&logoColor=black"/>
+  </a>
+  <a href="https://instagram.com/mr.shashan_official">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
+  </a>
+  <a href="mailto:mr.shashansoni@gmail.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+  </a>
 </p>
 
-<p align="center">
-  <a href="https://linkedin.com/in/shashan-lumbhani"><img src="https://img.shields.io/badge/-LinkedIn-0077B5?style=flat&logo=Linkedin&logoColor=white"/></a>
-  <a href="https://instagram.com/mr.shashan_official"><img src="https://img.shields.io/badge/-Instagram-E4405F?style=flat&logo=Instagram&logoColor=white"/></a>
-  <a href="https://www.leetcode.com/soni-shashan"><img src="https://img.shields.io/badge/leetcode-220+-green?color=green&logo=leetcode"/></a>
-  <a href="mailto:mr.shashansoni@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat&logo=Gmail&logoColor=white"/></a>
-</p>
+<img src="https://komarev.com/ghpvc/?username=soni-shashan&label=Profile+Views&color=0e75b6&style=flat" alt="Profile views" />
 
-## 🚀 About Me
+</div>
 
-- 🎓 B.Tech in Computer Science Engineering
-- 💻 Passionate about coding and problem-solving
-- 🌱 Always learning and exploring new technologies
-- ✨ "Code is like humor. When you have to explain it, it’s bad." - Cory House
+---
 
-## 🛠 Skills
-<p align="center">
-  <img src="https://img.shields.io/badge/-C++-00599C?style=flat&logo=c%2B%2B&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Java-007396?style=flat&logo=Java&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
-  <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html5&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat&logo=css3&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Git-F05032?style=flat&logo=git&logoColor=white"/>
-  <img src="https://img.shields.io/badge/-Linux-FCC624?style=flat&logo=linux&logoColor=black"/>
-</p>
+## 🧑‍💻 About Me
 
+```python
+class ShashanLumbhani:
+    def __init__(self):
+        self.name        = "Shashan Lumbhani"
+        self.role        = "AI Engineer & Software Developer"
+        self.university  = "CHARUSAT — B.Tech CSE (AI/ML Specialization)"
+        self.cgpa        = "9.68 / 10.0"
+        self.location    = "Bhavnagar, Gujarat, India 🇮🇳"
+        self.focus       = ["Deep Learning","Machine Learning", "Agentic AI", "Full-Stack Dev"]
+        self.currently   = "CHARUSAT Undergraduate Student Fellow "
+        self.fun_fact    = "I debug with print statements and I'm not ashamed 😄"
 
-## 📊 GitHub Stats
+    def motto(self):
+        return "Turning complex problems into elegant solutions through AI and clean code."
+```
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=soni-shashan&show_icons=true&theme=radical" alt="GitHub Stats" />
-</p>
+---
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=soni-shashan&theme=radical" alt="GitHub Streak" />
-</p>
+## 🛠️ Tech Stack
+
+<div align="center">
+
+### 🧠 AI / ML
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=flat-square&logo=jupyter&logoColor=white)
+
+`Neural Architecture Search` &nbsp;·&nbsp; `Transfer Learning` &nbsp;·&nbsp; `Computer Vision` &nbsp;·&nbsp; `NLP` &nbsp;·&nbsp; `Reinforcement Learning`
+
+### 💻 Languages
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+
+### 🚀 Full-Stack
+![React](https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
+
+### 🛠️ Tools & Platforms
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat-square&logo=postman&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+
+</div>
+
+---
+
+## 📊 GitHub Analytics
+
+<div align="center">
+  <img height="180em" src="https://github-readme-stats-fast.vercel.app/api?username=soni-shashan&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true&hide_border=true"/>
+  <img height="180em" src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=soni-shashan&layout=compact&langs_count=8&theme=tokyonight&hide_border=true"/>
+</div>
+
+<div align="center">
+  <img src="https://github-readme-streak-stats-eight.vercel.app/?user=soni-shashan&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</div>
+
+---
+
+## 📈 GitHub Activity Graph
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=soni-shashan&theme=tokyo-night&hide_border=true" alt="Activity Graph"/>
+</div>
+
+---
 
 ## 🏆 LeetCode Stats
 
-<p align="center">
-  <img src="https://leetcard.jacoblin.cool/soni-shashan?theme=dark&font=Noto%20Sans" alt="LeetCode Stats" />
-</p>
+<div align="center">
+  <img src="https://leetcard.jacoblin.cool/soni-shashan?theme=dark&font=Noto%20Sans&ext=heatmap" alt="LeetCode Stats" />
+</div>
 
-## 🌟 GitHub Trophies
+---
 
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=soni-shashan&theme=darkhub&column=7" alt="GitHub Trophies" />
-</p>
+## 🏅 GitHub Trophies
 
-## 🐍 Contribution Graph
+<div align="center">
+  <img src="https://github-trophies.vercel.app/?username=soni-shashan&theme=tokyonight&no-frame=true&no-bg=true&column=7&margin-w=4" alt="GitHub Trophies" />
+</div>
 
-![GitHub Contributions](https://github.com/soni-shashan/soni-shashan/blob/main/.github/ocean.gif) 
+---
 
-## 🚀 Hacktoberfest 2024
-[![An image of @sonishashan's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/sonishashan)](https://holopin.io/@sonishashan)
+## 🐍 Contribution Snake
 
-<p align="center">
-  <img src="https://komarev.com/ghpvc/?username=soni-shashan&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
-</p>
+<div align="center">
+  <img src="https://github.com/soni-shashan/soni-shashan/blob/main/.github/ocean.gif" alt="Contribution Graph Snake" />
+</div>
+
+---
+
+## 🎯 Highlights & Achievements
+
+| | Achievement | Organization | Year |
+|:-:|---|---|:-:|
+| ⚗️ | **Undergraduate Student Fellow (UGSF)** — AI/ML Research | CHARUSAT | 2025–Present |
+| 🤖 | **Finalist — Robofest Gujarat 5.0** — Autonomous Navigation | GUJCOST | 2025–2026 |
+| 🥈 | **2nd Runner Up — DUHacks 5.0** — National Hackathon | DDU | Jan 2026 |
+| 🥈 | **2nd Runner Up — Innotech 2.0** — Project Competition | CHARUSAT | Oct 2025 |
+| 🌟 | **Open Source Contributor** — Hacktoberfest 2024 | GitHub | Oct 2024 |
+
+<div align="center">
+
+[![Holopin Badges](https://holopin.me/sonishashan)](https://holopin.io/@sonishashan)
+
+</div>
+
+---
+
+## 🎓 Education
+
+**B.Tech in Computer Science & Engineering** — *Specialization: AI/ML*
+🏛️ Charotar University of Science & Technology (CHARUSAT), Anand, Gujarat &nbsp;·&nbsp; 2023–2027
+📈 CGPA: **9.68 / 10.0** *(Up to 5th Semester)*
+
+**Higher Secondary Certificate (HSC) — Science**
+🏛️ B.N.Virani Science Academy, Bhavnagar, Gujarat &nbsp;·&nbsp; 2021–2023
+📈 Percentile: **95.63%** &nbsp;·&nbsp; GUJCET: **98.10 Percentile**
+
+---
+
+## 📫 Let's Connect!
+
+<div align="center">
+
+Open to **AI/ML research collaborations**, **full-stack projects**, **internship opportunities**, and **hackathon teaming**!
+
+[![LinkedIn](https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/shashan-lumbhani)
+[![Email](https://img.shields.io/badge/Send_an_Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mr.shashansoni@gmail.com)
+
+---
+
+*⭐ If you find my work interesting, consider starring some repositories — it means a lot!*
+
+*© 2026 Shashan Lumbhani · Bhavnagar, Gujarat, India*
+
+</div>
